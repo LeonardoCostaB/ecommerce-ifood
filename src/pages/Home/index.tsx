@@ -1,5 +1,9 @@
+import { Header } from "../../components/Header";
+
 export function Home() {
    return (
-      <div>Dolce Cannella</div>
+      <>
+         <Header />
+      </>
    );
 };

@@ -1,0 +1,19 @@
+@mixin Display($direction, $items, $justify, $gap) {
+   display: flex;
+
+   @if $direction != "" {
+      flex-direction: $direction;
+   }
+
+   @if $items != "" {
+      align-items: $items;
+   }
+
+   @if $justify != "" {
+      justify-content: $justify;
+   }
+
+   @if $gap != "" {
+      gap: $gap;
+   }
+}

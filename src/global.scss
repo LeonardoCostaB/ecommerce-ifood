@@ -1,0 +1,31 @@
+@import "./scss/vars";
+
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+
+   font-family: 'Open Sans', sans-serif;
+}
+
+html {
+   font-size: 62.5%;
+}
+
+body {
+   font-size: 1.6rem;
+   background-color: #F9F9F9;
+}
+
+li {
+   list-style: none;
+}
+
+a {
+   text-decoration: none;
+}
+
+.dolce-cannella {
+   font-style: italic;
+   color: $beige-400;
+}

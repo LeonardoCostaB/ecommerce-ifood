@@ -1,0 +1,57 @@
+@import "../../scss/vars";
+@import "../../scss/mixin";
+
+.header-container {
+   @include Display(column, center, "", 2rem);
+
+   background-color: $white-500;
+
+
+   .header-row-top {
+      padding: .5rem 24px;
+
+      @include Display("", center, space-between, 2rem);
+
+      border-bottom: .2rem solid $black-rgba;
+
+      img {
+         width: 10%
+      }
+   }
+
+   nav {
+      padding: .5rem 24px;
+   }
+
+   .list-container {
+      @include Display("", center, "", 2rem);
+
+      .list-navigation {
+         padding: 0 .8rem;
+
+         position: relative;
+
+         &::before {
+            content: "";
+
+            position: absolute;
+            left: 0;
+            bottom: -.5rem;
+
+            width: 100%;
+            height: .2rem;
+
+            background-color: #AB5235;
+         }
+
+         .link-navigation {
+            color: $black-500;
+
+
+            &:hover {
+               color: #AB5235;
+            }
+         }
+      }
+   }
+}
