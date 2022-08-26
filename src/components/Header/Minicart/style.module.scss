@@ -1,0 +1,22 @@
+.minicart {
+   position: fixed;
+   top: 8.8rem;
+   right: 0;
+
+   width: 0;
+   height: 0;
+
+   visibility: hidden;
+   opacity: 0;
+
+   &.show {
+      height: 100%;
+      width: 42.5rem;
+      max-width: 42.5rem;
+
+      visibility: visible;
+      opacity: 1;
+
+      background-color: aquamarine;
+   }
+}

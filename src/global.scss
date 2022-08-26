@@ -37,4 +37,7 @@ button {
    color: $beige-400;
 }
 
-
+.animation-arrow {
+   transform: rotate(-180deg);
+   transition: 300ms transform;
+}

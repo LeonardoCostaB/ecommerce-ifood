@@ -7,3 +7,11 @@ $black-rgba: rgba(0, 0, 0, 0.205);
 
 $beige-400: #F2D59C;
 $beige-500: #AB5235;
+
+$grid-breakpoints: (
+	xs: 0,
+	sm: 576px,
+	md: 768px,
+	lg: 992px,
+	xl: 1200px,
+) !default;
