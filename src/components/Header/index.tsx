@@ -1,10 +1,11 @@
 import style from "./style.module.scss";
 
 import logo from "../../assets/svgs/logo.svg";
+import { useState } from "react";
 
 const optionsNavigationLink = {
    home: {
-      name: "Início",
+      name: "Home",
       link: "/"
    },
 
@@ -26,40 +27,66 @@ const optionsNavigationLink = {
    dealer: {
       name: "Revendedor",
       link: "dealer"
-   }
+   },
 };
 
 export function Header() {
+   const [ isActiveSubmenu, setIsActiveSubmenu ] = useState<boolean>(false);
+
    return (
       <header className={style["header-container"]}>
-         <div className={style["header-row-top"]}>
-            <img src={logo} alt="" />
+         <img src={logo} alt="" />
 
-            <h2>Seja bem vindo(a) a <span className="dolce-cannella">Dolce Cannella</span></h2>
-
-            <div className={style["search-product"]}>
-               <label htmlFor=""></label>
-               <input type="text" placeholder="Pesquisar produto" />
-            </div>
-         </div>
-
-         <nav>
-            <ul className={style["list-container"]}>
-               {Object.entries(optionsNavigationLink).map(([ key, value ]) => {
-                  return <li
-                     key={key}
-                     className={style["list-navigation"]}
-                  >
-                     <a
-                        href={value.link}
-                        className={style["link-navigation"]}
+         <div className={style["container-nav-link"]}>
+            <nav>
+               <ul className={style["list-container"]}>
+                  {Object.entries(optionsNavigationLink).map(([ key, value ]) => {
+                     return <li
+                        key={key}
+                        className={style["list-navigation"]}
                      >
-                        { value.name }
-                     </a>
-                  </li>
-               })}
-            </ul>
-         </nav>
+                        { value.link === "menu" ? (
+                           <>
+                              <button
+                                 type="button"
+                                 className={style["link-dropdown"]}
+                                 onMouseOver={() => setIsActiveSubmenu(true)}
+                              >
+                                 Menu
+                              </button>
+
+                              { isActiveSubmenu && (
+                                 <div
+                                    className={style["submenu"]}
+                                 >
+                                    <a href="#">Tortas Doces</a>
+
+                                    <a href="#">Tortas Salgadas</a>
+
+                                    <a href="#">Bolos</a>
+
+                                    <a href="#">Individuais</a>
+                                 </div>
+                              )}
+
+                           </>
+                        ) : (
+                           <a
+                              href={value.link}
+                              className={style["link"]}
+                           >
+                              { value.name }
+                           </a>
+                        )}
+                     </li>
+                  })}
+               </ul>
+            </nav>
+
+            <button className={style["order-product"]}>
+               Faça o seu pedido
+            </button>
+         </div>
       </header>
    );
 };

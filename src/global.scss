@@ -14,7 +14,7 @@ html {
 
 body {
    font-size: 1.6rem;
-   background-color: #F9F9F9;
+   background-color: $white-400;
 }
 
 li {
@@ -25,7 +25,16 @@ a {
    text-decoration: none;
 }
 
+button {
+   background-color: transparent;
+   border: 0;
+
+   cursor: pointer;
+}
+
 .dolce-cannella {
    font-style: italic;
    color: $beige-400;
 }
+
+

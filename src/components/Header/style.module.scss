@@ -2,56 +2,119 @@
 @import "../../scss/mixin";
 
 .header-container {
-   @include Display(column, center, "", 2rem);
+   @include Display("", center, space-between, 2rem);
+
+   padding: .5rem 2.4rem;
 
    background-color: $white-500;
 
+   border: .2rem solid $black-rgba;
 
-   .header-row-top {
-      padding: .5rem 24px;
-
-      @include Display("", center, space-between, 2rem);
-
-      border-bottom: .2rem solid $black-rgba;
-
-      img {
+   img {
          width: 10%
       }
-   }
 
-   nav {
-      padding: .5rem 24px;
-   }
+   .container-nav-link {
+      @include Display("", center, space-between, 5rem);
 
-   .list-container {
-      @include Display("", center, "", 2rem);
+      nav {
+         padding: .5rem 24px;
 
-      .list-navigation {
-         padding: 0 .8rem;
+         .list-container {
+            @include Display("", center, "", 2rem);
 
-         position: relative;
+            .list-navigation {
+               padding: 0 .8rem;
 
-         &::before {
-            content: "";
+               position: relative;
 
-            position: absolute;
-            left: 0;
-            bottom: -.5rem;
+               .link, .link-dropdown {
+                  font-size: 1.6rem;
+                  color: $black-500;
+               }
 
-            width: 100%;
-            height: .2rem;
+               .link-dropdown {
+                  &:before {
+                     content: "";
 
-            background-color: #AB5235;
-         }
+                     width: 100%;
+                     height: 35px;
 
-         .link-navigation {
-            color: $black-500;
+                     position: absolute;
+                     top: 20px;
+                  }
+               }
 
+               .submenu {
+                  width: 19rem;
+                  max-width: 19rem;
 
-            &:hover {
-               color: #AB5235;
+                  padding: .5rem 0;
+
+                  @include Display(column, center, "", 1rem);
+
+                  position: absolute;
+                  top: 5.7rem;
+                  left: -6rem;
+
+                  background-color: #ffffff;
+
+                  pointer-events: none;
+                  opacity: 0;
+
+                  a {
+                     &:hover {
+                        color: $beige-500;
+                     }
+                  }
+               }
+
+               &::before {
+                  content: "";
+
+                  position: absolute;
+                  left: 0;
+                  bottom: -3.5rem;
+
+                  width: 100%;
+                  height: .2rem;
+
+                  background-color: $beige-500;
+
+                  transform-origin: right;
+                  transform: scaleX(0);
+                  transition: transform .3s ease-in-out;
+               }
+
+               &:hover {
+                  .submenu {
+                     pointer-events: all;
+                     opacity: 1;
+                  }
+
+                  .link, .link-dropdown {
+                     color: $beige-500;
+                  }
+
+                  &::before {
+                     transform-origin: left;
+                     transform: scaleX(1);
+                  }
+               }
             }
          }
+      }
+
+      .order-product {
+         padding: .9rem;
+
+         background-color: $beige-500;
+         color: $beige-400;
+
+         border-radius: .4rem;
+
+         font-weight: 500;
+         text-transform: uppercase;
       }
    }
 }
