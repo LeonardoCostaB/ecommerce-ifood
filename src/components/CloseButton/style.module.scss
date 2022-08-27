@@ -1,0 +1,14 @@
+@import "../../scss/vars";
+@import "../../scss/mixin";
+
+.close-menu {
+   position: absolute;
+   top: 0;
+   right: 0;
+
+   margin: 16px;
+
+   @include mq(lg, min) {
+      display: none;
+   }
+}
