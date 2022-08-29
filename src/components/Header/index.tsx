@@ -38,6 +38,8 @@ const optionsNavigationLink = {
    },
 };
 
+console.log(style)
+
 export function Header() {
    const [ isActiveSubmenu, setIsActiveSubmenu ] = useState<boolean>(false);
    const [ isActiveMenuMobile, setIsActiveMenuMobile ] = useState<boolean>(false);
@@ -82,7 +84,7 @@ export function Header() {
                         return <li
                            key={key}
                            className={currentLocation == value.link ?
-                              `${style["list-navigation"]} ${style["active"]}` :
+                              `${style["list-navigation"]} ${style.active}` :
                               style["list-navigation"]}
                         >
                            { value.link === "menu" ? (

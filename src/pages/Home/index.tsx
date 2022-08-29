@@ -53,9 +53,10 @@ export function Home() {
 
          <main>
             <section className={style["apresentation-section"]}>
-               <div>
+               <div className={style["title-apresentation"]}>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste consequuntur libero asperiores delectus, pariatur natus dolores repudiandae temporibus odit excepturi adipisci rem dicta harum ex tenetur inventore tempora assumenda explicabo.
                </div>
+
                <SwiperSlider />
             </section>
 

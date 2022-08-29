@@ -6,6 +6,10 @@
 
    max-width: 50%;
 
+   @include mq(lg, max) {
+      max-width: 100%;
+   }
+
    .swiper-slide {
       @include Display("", "", center, "");
    }

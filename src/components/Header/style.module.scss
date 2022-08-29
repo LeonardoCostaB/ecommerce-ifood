@@ -98,6 +98,17 @@
                   }
                }
 
+               &.active {
+                  &::before {
+                     width: 100%;
+                     transform: scaleX(1);
+                  }
+
+                  .link {
+                     color: $beige-500;
+                  }
+               }
+
                .link, .link-dropdown {
                   font-size: 1.6rem;
                   color: $black-500;
