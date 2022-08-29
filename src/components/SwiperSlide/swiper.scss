@@ -1,21 +1,23 @@
+@import "../../scss/vars";
+@import "../../scss/mixin";
+
 .swiper {
    margin-top: .1rem;
 
-   .swiper-slide {
-      display: flex;
-      justify-content: center;
+   max-width: 50%;
 
-      background-color: #ffffff;
+   .swiper-slide {
+      @include Display("", "", center, "");
    }
 
    .swiper-button-prev, .swiper-button-next {
       &::after {
          font-size: 2rem;
-         color: #000000;
+         color: $black-500;
       }
    }
 
    .swiper-pagination-bullet {
-      background: #000000;
+      background: $black-500;
    }
 }

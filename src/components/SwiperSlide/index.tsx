@@ -18,6 +18,7 @@ export function SwiperSlider() {
          modules={[ Navigation, Pagination, Autoplay ]}
          spaceBetween={50}
          slidesPerView={1}
+         loop={true}
          navigation
          autoplay={{
             delay: 4000,
