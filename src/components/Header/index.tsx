@@ -118,7 +118,10 @@ export function Header() {
                      })}
                   </ul>
 
-                  <div className="hidden-modal" onClick={() => setIsActiveMenuMobile(false)}></div>
+                  <div
+                     className={`hidden-modal ${isActiveMenuMobile && "visibility"}`}
+                     onClick={() => setIsActiveMenuMobile(false)}
+                  />
                </nav>
 
                <a

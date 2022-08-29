@@ -13,7 +13,7 @@ export function Modal({ children, isActive, event }: ModalProps) {
       >
          { children }
 
-         <div className={`hidden-modal ${isActive && "visibility"}`} onClick={event}></div>
+         <div className={`hidden-modal ${isActive && "visibility"}`} onClick={event} />
       </div>
    );
 };
