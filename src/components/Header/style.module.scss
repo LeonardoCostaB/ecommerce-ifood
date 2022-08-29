@@ -115,6 +115,7 @@
 
                      position: absolute;
                      top: 20px;
+                     left: 0;
                   }
 
                   .open-submenu {
@@ -144,6 +145,7 @@
                      position: absolute;
                      top: 5.7rem;
                      left: -6rem;
+                     z-index: 5;
                   }
 
                   a {
@@ -164,7 +166,7 @@
 
                   position: absolute;
                   left: 0;
-                  bottom: -3.5rem;
+                  bottom: -3.4rem;
 
                   width: 100%;
                   height: .2rem;

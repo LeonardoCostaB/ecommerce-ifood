@@ -4,7 +4,7 @@ interface ModalProps {
    children: React.ReactNode;
    isActive: boolean;
    event: () => void;
-}
+};
 
 export function Modal({ children, isActive, event }: ModalProps) {
    return (

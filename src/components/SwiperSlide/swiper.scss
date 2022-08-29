@@ -1,0 +1,21 @@
+.swiper {
+   margin-top: .1rem;
+
+   .swiper-slide {
+      display: flex;
+      justify-content: center;
+
+      background-color: #ffffff;
+   }
+
+   .swiper-button-prev, .swiper-button-next {
+      &::after {
+         font-size: 2rem;
+         color: #000000;
+      }
+   }
+
+   .swiper-pagination-bullet {
+      background: #000000;
+   }
+}

@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { CaretDown, List, ShoppingCart } from "phosphor-react";
+import { CaretDown, List } from "phosphor-react";
 
 import { CloseButton } from "../CloseButton";
-import { Modal } from "../Modal";
 import { Minicart } from "./Minicart";
 
 import style from "./style.module.scss";

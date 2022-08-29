@@ -4,7 +4,7 @@ import style from "./style.module.scss";
 
 interface CloseButtonProps {
    event: () => void;
-}
+};
 
 export function CloseButton({ event }: CloseButtonProps) {
    return (

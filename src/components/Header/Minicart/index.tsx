@@ -1,9 +1,10 @@
 import { useState } from "react";
 import { ShoppingCart } from "phosphor-react";
 
-import style from "./style.module.scss";
 import { Modal } from "../../Modal";
 import { CloseButton } from "../../CloseButton";
+
+import style from "./style.module.scss";
 
 export function Minicart() {
    const [ isActiveMinicart, setIsActiveMinicart ] = useState<boolean>(false);

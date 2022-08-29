@@ -1,0 +1,16 @@
+@import "../../scss/vars";
+@import "../../scss/mixin";
+
+.image-slider {
+   height: 42rem;
+   width: 80rem;
+
+   @include mq(lg, max) {
+      width: 100%;
+   }
+
+   @include mq(sm, max) {
+      height: 30rem;
+      width: 100%;
+   }
+}
