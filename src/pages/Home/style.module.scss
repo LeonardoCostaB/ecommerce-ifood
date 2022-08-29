@@ -1,0 +1,110 @@
+@import "../../scss/vars";
+@import "../../scss/mixin";
+
+.apresentation-section {
+   @include Display("", center, space-between, "");
+
+   padding: 2rem 2.4rem;
+
+   background-color: $beige-400;
+
+   .title-apresentation {
+      text-align: center;
+
+      padding-bottom: 1.5rem;
+
+      .description {
+         padding-top: 2rem;
+      }
+
+      .check-product {
+         display: block;
+         padding-top: 2rem;
+         color: $beige-500;
+      }
+   }
+}
+
+.product-list {
+   padding: 0 2.4rem 2.4rem;
+
+   .section-title {
+      padding: 2rem 0 3rem;
+
+      text-align: center;
+      color: $beige-500;
+   }
+
+   .container {
+      @include Display("", center, center, 2rem);
+
+      .product {
+         width: 26.6rem;
+         height: 35rem;
+
+         border-radius: 3.5rem;
+
+         position: relative;
+
+         overflow: hidden;
+
+         img {
+            object-fit: cover;
+
+            width: 100%;
+            height: 100%;
+
+            border-radius: 2rem;
+
+            -moz-transition: all 0.3s;
+            -webkit-transition: all 0.3s;
+            transition: all 0.3s;
+         }
+
+         .product-access {
+            margin-bottom: 2rem;
+            width: 100%;
+
+            position: absolute;
+            bottom: 0;
+            left: 0;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            strong {
+               margin-bottom: 1rem;
+
+               font-size: 2.5rem;
+               font-weight: 700;
+
+               color: $white-500;
+
+               letter-spacing: 2px;
+
+               text-align: center;
+               text-transform: uppercase;
+            }
+
+            a {
+               padding: .2rem 1.5rem;
+
+               font-size: 1.4rem;
+               font-weight: 700;
+
+               background-color: $white-500;
+               border-radius: .8rem;
+            }
+         }
+
+         &:hover {
+            img {
+               -moz-transform: scale(1.1);
+               -webkit-transform: scale(1.1);
+               transform: scale(1.1);
+            }
+         }
+      }
+   }
+}
