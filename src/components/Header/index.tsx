@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import { CaretDown, List } from "phosphor-react";
+import { Link } from "react-router-dom";
 
 import { CloseButton } from "../CloseButton";
 import { Minicart } from "./Minicart";
@@ -40,6 +42,10 @@ export function Header() {
    const [ isActiveSubmenu, setIsActiveSubmenu ] = useState<boolean>(false);
    const [ isActiveMenuMobile, setIsActiveMenuMobile ] = useState<boolean>(false);
 
+   const locationURL = useLocation();
+
+   const currentLocation = locationURL.pathname
+
    return (
       <>
          <header className={style["header-container"]}>
@@ -55,11 +61,13 @@ export function Header() {
                />
             </button>
 
-            <img
-               src={logo}
-               alt="logo Dolce Cannella"
-               className={style.logo}
-            />
+            <Link to="/">
+               <img
+                  src={logo}
+                  alt="logo Dolce Cannella"
+                  className={style.logo}
+               />
+            </Link>
 
             <div className={style["container-nav-link"]}>
                <nav
@@ -73,7 +81,9 @@ export function Header() {
                      {Object.entries(optionsNavigationLink).map(([ key, value ]) => {
                         return <li
                            key={key}
-                           className={style["list-navigation"]}
+                           className={currentLocation == value.link ?
+                              `${style["list-navigation"]} ${style["active"]}` :
+                              style["list-navigation"]}
                         >
                            { value.link === "menu" ? (
                               <>

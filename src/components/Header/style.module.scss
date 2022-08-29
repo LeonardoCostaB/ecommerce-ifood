@@ -6,9 +6,9 @@
 
    padding: .5rem 2.4rem;
 
-   background-color: $white-500;
+   background-color: $beige-400;
 
-   box-shadow: 0px -3px 4px black;
+   border-bottom: 2px solid rgba(0, 0, 0, 0.041);
 
    @include mq(lg, max) {
       padding: .5rem 1.6rem;
@@ -108,7 +108,7 @@
                      @include Display("", center, space-between, 1rem);
                   }
 
-                  &:before {
+                  &::before {
                      content: "";
 
                      width: 100%;
@@ -211,6 +211,8 @@
          font-weight: 500;
          text-transform: uppercase;
 
+         transition: .3s all;
+
          .order-product-icon {
             display: none;
 
@@ -226,6 +228,11 @@
          @include mq(lg, max) {
             font-size: 0;
             background-color: transparent;
+         }
+
+         &:hover {
+            background-color: transparent;
+            color: $beige-500;
          }
       }
    }
