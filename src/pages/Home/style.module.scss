@@ -13,23 +13,37 @@
 
       flex-direction: column;
       gap: 2.5rem;
-
-
    }
 
    .title-apresentation {
+      flex: 1;
+
       @include mq(lg, max) {
          padding: 0 1.6rem;
       }
 
+      .title {
+         text-align: center;
+         padding-bottom: 1.5rem;
+      }
+
       .description {
-         padding-top: 2rem;
+         text-align: center;
       }
 
       .check-product {
          display: block;
          padding-top: 2rem;
          color: $beige-500;
+      }
+
+      .comparison-soon {
+         @include Display("", center, center, 1rem);
+         padding-top: 1.2rem;
+
+         .old-logo {
+            width: 8.5rem;
+         }
       }
    }
 }
@@ -135,6 +149,60 @@
                -moz-transform: scale(1.1);
                -webkit-transform: scale(1.1);
                transform: scale(1.1);
+            }
+         }
+      }
+   }
+}
+
+.our-story {
+   background-color: $white-500;
+
+   .section-title {
+      padding: 2rem 0 3rem;
+
+      text-align: center;
+      color: $beige-500;
+
+      @media screen and (max-width: 425px) {
+         font-size: 2rem;
+      }
+   }
+
+   .container {
+      @include Display("", flex-start, space-evenly, "");
+
+      padding: 0 2.4rem 3rem;
+
+      .shop-img {
+         width: 25%;
+         border-radius: .8rem;
+      }
+
+      .description {
+         .text {
+            font-size: 1.8rem;
+            margin-bottom: 5rem;
+
+            span {
+               display: block;
+               margin-bottom: 5rem;
+            }
+         }
+
+         .access-aboutUs {
+            padding: 1rem 2rem;
+
+            border: .2rem solid $beige-500;
+            border-radius: .4rem;
+
+            color: $beige-500;
+
+            transition: all 0.3s;
+
+            &:hover {
+               border: .2rem solid $beige-400;
+               color: $beige-400;
             }
          }
       }
