@@ -174,12 +174,24 @@
 
       padding: 0 2.4rem 3rem;
 
+      @include mq(lg, max) {
+         padding: 0 1.6rem 3rem;
+      }
+
       .shop-img {
          width: 25%;
          border-radius: .8rem;
+
+         @include mq(lg, max) {
+            display: none;
+         }
       }
 
       .description {
+         @include mq(lg, max) {
+            @include Display(column, center, "", "");
+         }
+
          .text {
             font-size: 1.8rem;
             margin-bottom: 5rem;
@@ -187,6 +199,14 @@
             span {
                display: block;
                margin-bottom: 5rem;
+            }
+
+            @include mq(lg, max) {
+               text-align: center;
+            }
+
+            @include mq(sm, max) {
+               font-size: 1.6rem;
             }
          }
 

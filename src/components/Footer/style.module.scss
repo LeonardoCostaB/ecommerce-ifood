@@ -13,8 +13,21 @@
 
       font-size: 1.4rem;
 
+      @include mq(lg, max) {
+         flex-wrap: wrap;
+      }
+
+      @include mq(sm, max) {
+         flex-direction: column;
+         gap: 2rem;
+      }
+
       .address-shop {
          @include Display(column, "", "", 1rem);
+
+         @include mq(lg, max) {
+            align-items: center;
+         }
 
          .address {
             .link-address {
