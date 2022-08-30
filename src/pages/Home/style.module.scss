@@ -29,12 +29,10 @@
 
       .description {
          text-align: center;
-      }
 
-      .check-product {
-         display: block;
-         padding-top: 2rem;
-         color: $beige-500;
+         @media screen and (max-width: 320px) {
+            font-size: 1.4rem
+         }
       }
 
       .comparison-soon {

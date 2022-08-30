@@ -15,4 +15,8 @@
       height: 30rem;
       width: 100%;
    }
+
+   @media screen and (max-width: 320px) {
+      height: 25rem;
+   }
 }

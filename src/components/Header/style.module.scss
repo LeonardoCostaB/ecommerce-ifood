@@ -31,8 +31,11 @@
          font-size: 1.2rem;
          font-weight: 700;
          color: $beige-500;
-      }
 
+         @media screen and (max-width: 1999px) {
+            display: none;
+         }
+      }
    }
 
    .container-nav-link {
@@ -109,6 +112,10 @@
                   &::before {
                      width: 100%;
                      transform: scaleX(1);
+
+                     @include mq(lg, max) {
+                        bottom: -.5rem;
+                     }
                   }
 
                   .link {
