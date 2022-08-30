@@ -218,6 +218,10 @@
 
             transition: all 0.3s;
 
+            @include mq(sm, max) {
+               font-size: 1.4rem;
+            }
+
             &:hover {
                border: .2rem solid $beige-400;
                color: $beige-400;
