@@ -46,7 +46,7 @@ export function Header() {
 
    const locationURL = useLocation();
 
-   const currentLocation = locationURL.pathname
+   const currentLocation = locationURL.pathname;
 
    return (
       <>
@@ -63,12 +63,17 @@ export function Header() {
                />
             </button>
 
-            <Link to="/">
+            <Link
+               to="/"
+               className={style["container-logo"]}
+            >
                <img
                   src={logo}
                   alt="logo Dolce Cannella"
                   className={style.logo}
                />
+
+               <span className={style.slogan}>As melhores sobremesas artesanais</span>
             </Link>
 
             <div className={style["container-nav-link"]}>

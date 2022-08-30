@@ -8,8 +8,6 @@
 
    background-color: $beige-400;
 
-   border-bottom: 2px solid rgba(0, 0, 0, 0.041);
-
    @include mq(lg, max) {
       padding: .5rem 1.6rem;
    }
@@ -22,10 +20,19 @@
       }
    }
 
-   .logo {
-      @include mq(sm, max) {
-         width: 12rem
+   .container-logo {
+      .logo {
+         @include mq(sm, max) {
+            width: 12rem
+         }
       }
+
+      .slogan {
+         font-size: 1.2rem;
+         font-weight: 700;
+         color: $beige-500;
+      }
+
    }
 
    .container-nav-link {
