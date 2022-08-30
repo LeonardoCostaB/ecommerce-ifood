@@ -5,6 +5,8 @@
    height: 42rem;
    width: 80rem;
 
+   border-radius: .8rem;
+
    @include mq(lg, max) {
       width: 100%;
    }

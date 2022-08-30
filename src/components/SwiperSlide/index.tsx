@@ -7,10 +7,9 @@ import 'swiper/css/pagination';
 import "./swiper.scss";
 import style from "./style.module.scss";
 
-import alema from "../../assets/imgs/alema.jpg";
-import chocolate from "../../assets/imgs/chocolate.jpg";
+import pedacoCheesecake from "../../assets/imgs/pedaco-cheesecake.jpg";
+import tortaAfricana from "../../assets/imgs/torta-africana.jpg";
 import cremeTrufada from "../../assets/imgs/creme-trufada.jpg";
-import ferrero from "../../assets/imgs/ferrero.jpg";
 
 export function SwiperSlider() {
    return (
@@ -21,7 +20,7 @@ export function SwiperSlider() {
          loop={true}
          navigation
          autoplay={{
-            delay: 4000,
+            delay: 3000,
             pauseOnMouseEnter: true,
             disableOnInteraction : false
          }}
@@ -31,16 +30,16 @@ export function SwiperSlider() {
       >
          <SwiperSlide>
             <img
-               src={alema}
-               alt="torta alemã"
+               src={pedacoCheesecake}
+               alt="pedaco cheesecake"
                className={style["image-slider"]}
             />
          </SwiperSlide>
 
          <SwiperSlide>
             <img
-               src={chocolate}
-               alt="torta de chocolate"
+               src={tortaAfricana}
+               alt="torta africana"
                className={style["image-slider"]}
             />
          </SwiperSlide>
@@ -49,14 +48,6 @@ export function SwiperSlider() {
             <img
                src={cremeTrufada}
                alt="torta de creme trufada"
-               className={style["image-slider"]}
-            />
-         </SwiperSlide>
-
-         <SwiperSlide>
-            <img
-               src={ferrero}
-               alt="torta ferrero"
                className={style["image-slider"]}
             />
          </SwiperSlide>
