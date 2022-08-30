@@ -76,7 +76,11 @@ export function Home() {
                         className={style["old-logo"]}
                      />
 
-                     <img src={logo} alt="" />
+                     <img
+                        src={logo}
+                        alt=""
+                        className={style.logo}
+                     />
                   </div>
                </div>
 
