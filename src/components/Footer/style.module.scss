@@ -1,0 +1,68 @@
+@import "../../scss/vars";
+@import "../../scss/mixin";
+
+.footer {
+   background-color: $white-500;
+
+   padding: 2rem 0;
+
+   .container {
+      @include Display("", center, space-between, "");
+
+      padding: 0 2.4rem;
+
+      font-size: 1.4rem;
+
+      .address-shop {
+         @include Display(column, "", "", 1rem);
+
+         .address {
+            .link-address {
+               @include Display("", center, "", .5rem);
+
+               color: $black-500;
+
+               transition: all 0.3s;
+
+               &:hover {
+                  color:rgb(201, 97, 62);
+               }
+            }
+         }
+      }
+
+      .network-time {
+         @include Display(column, center, "", 1rem);
+
+         .networking {
+            @include Display("", center, "", 1rem);
+         }
+
+         .time {
+            @include Display(column, center, "", .3rem);
+         }
+      }
+
+      .finish {
+         @include Display("", center, flex-end, .8rem);
+
+         .developed {
+            font-size: 1.6rem;
+
+            .link-developed {
+               font-size: 1.2rem;
+               font-weight: 400;
+
+               color: $black-500;
+
+               transition: all 0.3s;
+
+               &:hover {
+                  color:rgb(201, 97, 62);
+               }
+            }
+         }
+
+      }
+   }
+}

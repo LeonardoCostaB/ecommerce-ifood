@@ -51,6 +51,8 @@
 .product-list {
    padding: 0 2.4rem 2.4rem;
 
+   background-color: $white-500;
+
    @include mq(lg, max) {
       padding: 0 1.6rem 2.4rem;
    }
@@ -156,8 +158,6 @@
 }
 
 .our-story {
-   background-color: $white-500;
-
    .section-title {
       padding: 2rem 0 3rem;
 

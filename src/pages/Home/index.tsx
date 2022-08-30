@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 ''
 import { Header } from "../../components/Header";
 import { SwiperSlider } from "../../components/SwiperSlide";
+import { Footer } from "../../components/Footer";
 
 import style from "./style.module.scss";
 
@@ -175,6 +176,8 @@ export function Home() {
                </div>
             </section>
          </main>
+
+         <Footer />
       </>
    );
 };
