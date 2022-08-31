@@ -162,7 +162,7 @@
 
                   @include Display(column, center, "", 1rem);
 
-                  background-color: #ffffff;
+                  background-color: $white-500;
 
                   pointer-events: none;
                   opacity: 0;

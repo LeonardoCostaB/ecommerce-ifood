@@ -38,8 +38,6 @@ const optionsNavigationLink = {
    },
 };
 
-console.log(style)
-
 export function Header() {
    const [ isActiveSubmenu, setIsActiveSubmenu ] = useState<boolean>(false);
    const [ isActiveMenuMobile, setIsActiveMenuMobile ] = useState<boolean>(false);

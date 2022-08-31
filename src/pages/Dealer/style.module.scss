@@ -1,0 +1,196 @@
+@import "../../scss/vars";
+@import "../../scss/mixin";
+
+.dealer {
+   @include Display("", center, space-around, "");
+
+   height: 100vh;
+
+   padding: 2rem 2.4rem;
+
+   @include mq(lg, max) {
+      height: auto;
+      padding: 2rem 1.6rem;
+
+      align-items: flex-start;
+      gap: 2.5rem;
+   }
+
+   @include mq(sm, max) {
+      flex-direction: column;
+   }
+
+   .container {
+      max-width: 50rem;
+      width: 100%;
+
+      @include mq(lg, max) {
+         width: 50%;
+      }
+
+      @include mq(sm, max) {
+         width: 100%;
+      }
+
+      .title {
+         padding-bottom: 3rem;
+         color: $beige-500;
+
+         @include mq(lg, max) {
+            font-size: 2.4rem;
+            text-align: center;
+         }
+      }
+
+      .description {
+         padding-bottom: 2rem;
+
+         font-size: 1.8rem;
+
+         @include mq(lg, max) {
+            text-align: center;
+            font-size: 1.5rem;
+         }
+
+         &:last-child {
+            padding-bottom: 0;
+         }
+      }
+   }
+
+   .container-form {
+      @include Display(column, center, flex-start, 1.2rem);
+
+      width: 100%;
+      max-width: 36.2rem;
+      padding: 2rem 1rem;
+
+      background-color: $white-500;
+
+      border-top: .4rem solid $beige-500;
+      border-bottom: .4rem solid $beige-500;
+      border-radius: .4rem;
+
+      @include mq(lg, max) {
+         width: 45%;
+      }
+
+      @include mq(sm, max) {
+         max-width: 100%;
+         width: 100%;
+      }
+
+      .form-dealer {
+         @include Display(column, flex-start, "", 2.5rem);
+
+         @include mq(sm, max) {
+            width: 100%;
+         }
+
+         .name-lastName {
+            @include Display("", center, "", 1.5rem);
+
+            @include mq(sm, max) {
+               width: 100%;
+            }
+         }
+
+         .input-wrapper {
+            @include Display(column, flex-start, "", .5rem);
+            width: 100%;
+            position: relative;
+
+            label {
+               @include Display("", center, "", "");
+
+               font-size: 1.3rem;
+
+               span {
+                  color: red;
+               }
+            }
+
+            input {
+               height: 3.5rem;
+               width: 100%;
+
+               padding: 0 .5rem;
+
+               border: .1rem solid rgba(0, 0, 0, 0.055);
+               border-radius: .4rem;
+
+               outline: 0;
+
+               font-size: 1.2rem;
+               color: #666666;
+
+               &.error-input {
+                  border: .1rem solid rgb(190, 30, 30);
+               }
+            }
+
+            .checkbox {
+               @include Display("", center, flex-start, .5rem);
+               width: 100%;
+
+               .input-checkbox {
+                  width: fit-content;
+                  height: auto;
+                  // border-radius: 50%;
+               }
+            }
+         }
+
+         .container-button {
+            @include Display("", center, center, "");
+            width: 100%;
+            margin-top: 2rem;
+
+            .submit-form {
+               width: 100%;
+               max-width: 15rem;
+
+               padding: .6rem 0;
+
+               border-radius: .4rem;
+
+               background-color: $beige-500;
+               color: $lilac-300;
+
+               transition: all 0.3s;
+
+               font-size: 1.2rem;
+               font-weight: 700;
+               text-transform: uppercase;
+
+               &:disabled {
+                  opacity: .5;
+
+                  cursor: no-drop;
+
+                  &:hover {
+                     background-color: $beige-500;
+                     color: $lilac-300;
+                  }
+               }
+
+               &:hover {
+                  background-color: $lilac-300;
+                  color: $beige-500;
+               }
+            }
+         }
+
+         .error-message {
+            font-size: 1.2rem;
+            font-weight: 500;
+
+            color: rgb(190, 30, 30);
+
+            position: absolute;
+            bottom: -18px;
+            left: 0;
+         }
+      }
+   }
+}
