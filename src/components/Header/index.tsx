@@ -19,7 +19,7 @@ const optionsNavigationLink = {
 
    about: {
       name: "Sobre",
-      link: "about-us"
+      link: "/about-us"
    },
 
    menu: {
@@ -29,12 +29,12 @@ const optionsNavigationLink = {
 
    contact: {
       name: "Contato",
-      link: "contact"
+      link: "/contact"
    },
 
    dealer: {
       name: "Revendedor",
-      link: "dealer"
+      link: "/dealer"
    },
 };
 
@@ -113,23 +113,23 @@ export function Header() {
                                     <div
                                        className={style["submenu"]}
                                     >
-                                       <a href="#">Tortas Doces</a>
+                                       <Link to="#">Tortas Doces</Link>
 
-                                       <a href="#">Tortas Salgadas</a>
+                                       <Link to="#">Tortas Salgadas</Link>
 
-                                       <a href="#">Bolos</a>
+                                       <Link to="#">Bolos</Link>
 
-                                       <a href="#">Individuais</a>
+                                       <Link to="#">Individuais</Link>
                                     </div>
                                  )}
                               </>
                            ) : (
-                              <a
-                                 href={value.link}
+                              <Link
+                                 to={value.link}
                                  className={style["link"]}
                               >
                                  { value.name }
-                              </a>
+                              </Link>
                            )}
                         </li>
                      })}
