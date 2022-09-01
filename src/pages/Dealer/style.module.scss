@@ -100,13 +100,13 @@
             width: 100%;
             position: relative;
 
-            label {
+            .label {
                @include Display("", center, "", "");
 
                font-size: 1.3rem;
 
                span {
-                  color: red;
+                  color: $red-500;
                }
             }
 
@@ -116,17 +116,33 @@
 
                padding: 0 .5rem;
 
-               border: .1rem solid rgba(0, 0, 0, 0.055);
+               border: .1rem solid $black-rgba-205;
                border-radius: .4rem;
 
                outline: 0;
 
                font-size: 1.2rem;
-               color: #666666;
+               color: $gray-500;
 
                &.error-input {
-                  border: .1rem solid rgb(190, 30, 30);
+                  border: .1rem solid $red-500;
                }
+            }
+
+            #message {
+               width: 100%;
+               height: 8.5rem;
+               padding: .5rem .5rem;
+
+               border: .1rem solid $black-rgba-205;
+               border-radius: .4rem;
+
+               font-size: 1.2rem;
+               color: $gray-500;
+
+               outline: 0;
+
+               resize: none
             }
 
             .checkbox {

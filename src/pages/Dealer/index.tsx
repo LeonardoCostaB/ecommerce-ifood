@@ -17,19 +17,21 @@ import style from "./style.module.scss";
 interface FormikDealerValues {
    name: string;
    lastName: string;
+   email: string;
    companyName: string;
    city: boolean;
    state: boolean;
-   email: string;
+   message: string;
 };
 
 const initialValuesFormik = {
    name: "",
    lastName: "",
+   email: "",
    companyName: "",
    city: false,
    state: false,
-   email: ""
+   message: ""
 };
 
 export function Dealer() {
@@ -69,7 +71,10 @@ export function Dealer() {
                      <Form className={style['form-dealer']}>
                         <fieldset className={style["name-lastName"]}>
                            <div className={style["input-wrapper"]}>
-                              <label htmlFor="name">
+                              <label
+                                 htmlFor="name"
+                                 className={style.label}
+                              >
                                  Nome <span>*</span>
                               </label>
 
@@ -88,7 +93,10 @@ export function Dealer() {
                            </div>
 
                            <div className={style["input-wrapper"]}>
-                              <label htmlFor="lastName">
+                              <label
+                                 htmlFor="lastName"
+                                 className={style.label}
+                              >
                                  Sobrenome <span>*</span>
                               </label>
 
@@ -108,7 +116,32 @@ export function Dealer() {
                         </fieldset>
 
                         <div className={style["input-wrapper"]}>
-                           <label htmlFor="companyName">
+                           <label
+                              htmlFor="email"
+                              className={style.label}
+                           >
+                              E-mail <span>*</span>
+                           </label>
+
+                           <Field
+                              type="email"
+                              name="email"
+                              id="email"
+                              className={errors.email && touched.email && style['error-input']}
+                           />
+
+                           <ErrorMessage
+                              component="span"
+                              name="email"
+                              className={ style['error-message'] }
+                           />
+                        </div>
+
+                        <div className={style["input-wrapper"]}>
+                           <label
+                              htmlFor="companyName"
+                              className={style.label}
+                           >
                               Nome da sua empresa ou estabelecimento
                            </label>
 
@@ -127,9 +160,9 @@ export function Dealer() {
                         </div>
 
                         <div className={style["input-wrapper"]}>
-                           <label htmlFor="">
+                           <legend className={style.label}>
                               Localização do seu négocio <span>*</span>
-                           </label>
+                           </legend>
 
                            <div className={style["checkbox"]}>
                               <Field
@@ -140,7 +173,12 @@ export function Dealer() {
                                  disabled={values.state == true}
                               />
 
-                              <label htmlFor="city">Campinas</label>
+                              <label
+                                 htmlFor="city"
+                                 className={style.label}
+                              >
+                                 Campinas
+                              </label>
 
                               <ErrorMessage
                                  component="span"
@@ -154,12 +192,16 @@ export function Dealer() {
                                  type="checkbox"
                                  id="state"
                                  name="state"
-                                 // value="sao paulo"
                                  className={style["input-checkbox"]}
                                  disabled={values.city == true}
                               />
 
-                              <label htmlFor="state">São Paulo</label>
+                              <label
+                                 htmlFor="state"
+                                 className={style.label}
+                              >
+                                 São Paulo
+                              </label>
 
                               <ErrorMessage
                                  component="span"
@@ -170,20 +212,23 @@ export function Dealer() {
                         </div>
 
                         <div className={style["input-wrapper"]}>
-                           <label htmlFor="email">
-                              E-mail <span>*</span>
+                           <label
+                              htmlFor="message"
+                              className={style.label}
+                           >
+                              Conte um pouco da sua história <span>*</span>
                            </label>
 
                            <Field
-                              type="email"
-                              name="email"
-                              id="email"
-                              className={errors.email && touched.email && style['error-input']}
+                              as="textarea"
+                              name="message"
+                              id={style.message}
+                              className={errors.message && touched.message && style['error-input']}
                            />
 
                            <ErrorMessage
                               component="span"
-                              name="email"
+                              name="message"
                               className={ style['error-message'] }
                            />
                         </div>
@@ -192,7 +237,7 @@ export function Dealer() {
                            <button
                               type="submit"
                               className={style["submit-form"]}
-                              disabled={ !(dirty && isValid && values.city == true || values.state == true) }
+                              disabled={ !(dirty && isValid && (values.city == true || values.state == true)) }
                            >
                               Enviar
                            </button>

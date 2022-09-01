@@ -11,16 +11,18 @@ export default yup.object().shape({
       .required("Sobrenome é obrigatório")
       .min(3, "Sobrenome inválido"),
 
-   companyName: yup.string(),
-
-   city: yup
-      .boolean(),
-
-   state: yup
-      .boolean(),
-
    email: yup
       .string()
       .required("Email obrigatório")
-      .email("Digite um email válido")
+      .email("Digite um email válido"),
+
+   companyName: yup.string(),
+
+   city: yup.boolean(),
+   state: yup.boolean(),
+
+   message: yup
+      .string()
+      .required("Messagem obrigatória")
+      .min(5, "conte um pouco mais sobre você")
 });

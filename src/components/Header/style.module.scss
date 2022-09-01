@@ -61,7 +61,7 @@
 
             padding: 0;
 
-            background-color: $black-rgba;
+            background-color: $black-rgba-205;
 
             opacity: 0;
             visibility: hidden;
@@ -178,7 +178,7 @@
                      color: $black-500;
 
                      @include mq(lg, max) {
-                        color: #666666;
+                        color: $gray-500;
                      }
 
                      &:hover {
