@@ -1,0 +1,33 @@
+@import "../../scss/vars";
+@import "../../scss/mixin";
+
+.main {
+   padding: 0 2.4rem;
+
+   @include mq(lg, max) {
+      padding: 0 1.6rem;
+   }
+
+   .title {
+      padding: 5rem 0;
+      text-align: center;
+      color: $beige-500;
+   }
+
+   .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(40rem, 0fr));
+      justify-content: center;
+      gap: 4.5rem 5rem;
+
+      padding-bottom: 3rem;
+
+      @include mq(md, max) {
+         grid-template-columns: repeat(auto-fit, minmax(33rem, 0fr));
+      }
+
+      @include mq(sm, max) {
+         display: block;
+      }
+   }
+}

@@ -1,0 +1,5 @@
+query GetLessionBySlug ($slug: String) {
+   produto(where: { categoria: $slug }) {
+      nomeDoProduto
+   }
+}

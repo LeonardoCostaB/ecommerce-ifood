@@ -111,13 +111,13 @@ export function Header() {
                                     <div
                                        className={style["submenu"]}
                                     >
-                                       <Link to="#">Tortas Doces</Link>
+                                       <Link to="/produtos/torta-doce">Tortas Doces</Link>
 
-                                       <Link to="#">Tortas Salgadas</Link>
+                                       <Link to="/produtos/torta-salgada">Tortas Salgadas</Link>
 
-                                       <Link to="#">Bolos</Link>
+                                       <Link to="/produtos/bolo">Bolos</Link>
 
-                                       <Link to="#">Individuais</Link>
+                                       <Link to="/produtos/individual">Individuais</Link>
                                     </div>
                                  )}
                               </>
