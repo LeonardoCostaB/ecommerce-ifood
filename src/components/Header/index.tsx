@@ -100,7 +100,7 @@ export function Header() {
                                     Menu
 
                                     <span
-                                       className={`${style["open-submenu"]} ${isActiveSubmenu && "animation-arrow"}`}
+                                       className={`${style["open-submenu"]} ${isActiveSubmenu && style["rotate-arrow"]}`}
                                        onClick={() => setIsActiveSubmenu(!isActiveSubmenu)}
                                     >
                                        <CaretDown size={16} />

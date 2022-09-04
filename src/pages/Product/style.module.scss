@@ -29,5 +29,22 @@
       @include mq(sm, max) {
          display: block;
       }
+
+      .loading {
+         height: 100vh;
+         text-align: center;
+         font-size: 1.8rem;
+      }
+
+      .no-product {
+         height: 100vh;
+
+         @include Display("", flex-start, center, "");
+
+         h5 {
+            font-size: 1.8rem;
+            text-align: center;
+         }
+      }
    }
 }

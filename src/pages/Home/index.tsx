@@ -14,44 +14,6 @@ import cremeTrufada from "../../assets/imgs/creme-trufada.jpg";
 import petit from "../../assets/imgs/petit.jpg";
 import loja from "../../assets/imgs/loja.jpeg";
 
-const products = {
-  sweetPie: {
-   img: {
-      src: "",
-      alt: ""
-   },
-   name: "",
-   link: ""
-  },
-
-  saltPie: {
-   img: {
-      src: "",
-      alt: ""
-   },
-   name: "",
-   link: ""
-  },
-
-  cake: {
-   img: {
-      src: "",
-      alt: ""
-   },
-   name: "",
-   link: ""
-  },
-
-  individual: {
-   img: {
-      src: "",
-      alt: ""
-   },
-   name: "",
-   link: ""
-  }
-}
-
 export function Home() {
    return (
       <>
@@ -94,58 +56,58 @@ export function Home() {
 
                <div className={style.container}>
                   <div className={style.product}>
-                     <a href="">
+                     <Link to="/produtos/torta-doce">
                         <img src={alema} alt="" />
-                     </a>
+                     </Link>
 
                      <div className={style["product-access"]}>
                         <strong>Torta Doce</strong>
 
-                        <a href="">
+                        <Link to="/produtos/torta-doce">
                            Saiba Mais
-                        </a>
+                        </Link>
                      </div>
                   </div>
 
                   <div className={style.product}>
-                     <a href="">
+                     <Link to="/produtos/torta-salgada">
                         <img src={tortaFrango} alt="" />
-                     </a>
+                     </Link>
 
                      <div className={style["product-access"]}>
                         <strong>Torta Salgada</strong>
 
-                        <a href="">
+                        <Link to="/produtos/torta-salgada">
                            Saiba Mais
-                        </a>
+                        </Link>
                      </div>
                   </div>
 
                   <div className={style.product}>
-                     <a href="">
+                     <Link to="/produtos/bolo">
                         <img src={cremeTrufada} alt="" />
-                     </a>
+                     </Link>
 
                      <div className={style["product-access"]}>
                         <strong>Bolo</strong>
 
-                        <a href="">
+                        <Link to="/produtos/bolo">
                            Saiba Mais
-                        </a>
+                        </Link>
                      </div>
                   </div>
 
                   <div className={style.product}>
-                     <a href="">
+                     <Link to="/produtos/individual">
                         <img src={petit} alt="" />
-                     </a>
+                     </Link>
 
                      <div className={style["product-access"]}>
                         <strong>Individuais</strong>
 
-                        <a href="">
+                        <Link to="/produtos/individual">
                            Saiba Mais
-                        </a>
+                        </Link>
                      </div>
                   </div>
                </div>

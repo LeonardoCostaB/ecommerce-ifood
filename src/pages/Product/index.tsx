@@ -42,14 +42,6 @@ export function Product () {
       }
    });
 
-   if(data?.produtos.length === 0) {
-      return (
-         <div>Produto não disponivel</div>
-      );
-   };
-
-   console.log(data);
-
    return (
       <>
          <Header />
@@ -60,19 +52,24 @@ export function Product () {
             </h1>
 
             <div className={style.container}>
-               { loading && ( <div>Carregando...</div> ) }
+               { loading && ( <div className={style.loading}>Carregando...</div> ) }
 
-               { data?.produtos.map((value, index) => {
-                  return <ProductApresentation
-                     key={index}
-                     image={value.image.url}
-                     name={value.name}
-                     size={value.size}
-                     description={value.description}
-                     price={value.price}
-                  />
-               })
-               }
+               { data?.produtos.length === 0 ? (
+                  <div className={style["no-product"]}>
+                     <h5>Não encontramos esse produto em nosso estoque</h5>
+                  </div>
+               ) : (
+                  data?.produtos.map((value, index) => {
+                     return <ProductApresentation
+                        key={index}
+                        image={value.image.url}
+                        name={value.name}
+                        size={value.size}
+                        description={value.description}
+                        price={value.price}
+                     />
+                  })
+               )}
             </div>
          </main>
 

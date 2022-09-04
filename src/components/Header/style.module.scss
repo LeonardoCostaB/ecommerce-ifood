@@ -147,9 +147,14 @@
                   .open-submenu {
                      display: flex;
                      transform: rotate(0);
+                     transition: transform 300ms;
 
                      @include mq(lg, min) {
                         display: none;
+                     }
+
+                     &.rotate-arrow {
+                        transform: rotate(-180deg);
                      }
                   }
                }
@@ -172,6 +177,10 @@
                      top: 5.7rem;
                      left: -6rem;
                      z-index: 5;
+                  }
+
+                  @include mq(lg, max) {
+                     padding: 1.5rem 0;
                   }
 
                   a {
