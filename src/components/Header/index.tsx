@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { CaretDown, List } from "phosphor-react";
 import { Link } from "react-router-dom";
+import { Link as LinkScroll } from "react-scroll";
 
 import { CloseButton } from "../CloseButton";
 import { Minicart } from "./Minicart";
@@ -24,7 +25,7 @@ const optionsNavigationLink = {
 
    menu: {
       name: "Menu",
-      link: "menu"
+      link: "product"
    },
 
    contact: {
@@ -90,10 +91,14 @@ export function Header() {
                               `${style["list-navigation"]} ${style.active}` :
                               style["list-navigation"]}
                         >
-                           { value.link === "menu" ? (
+                           { value.name === "Menu" ? (
                               <>
-                                 <button
-                                    type="button"
+                                 <LinkScroll
+                                    to={value.link}
+                                    smooth={true}
+                                    spy={true}
+                                    offset={5}
+                                    duration={500}
                                     className={style["link-dropdown"]}
                                     onMouseOver={() => setIsActiveSubmenu(true)}
                                  >
@@ -105,7 +110,7 @@ export function Header() {
                                     >
                                        <CaretDown size={16} />
                                     </span>
-                                 </button>
+                                 </LinkScroll>
 
                                  { isActiveSubmenu && (
                                     <div
