@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-''
+
 import { Header } from "../../components/Header";
 import { SwiperSlider } from "../../components/SwiperSlide";
 import { Footer } from "../../components/Footer";
@@ -49,7 +49,7 @@ export function Home() {
                <SwiperSlider />
             </section>
 
-            <section className={style["product-list"]}>
+            <section id="product" className={style["product-list"]}>
                <h2 className={style["section-title"]}>
                   Venha conferir os nossos produtos
                </h2>

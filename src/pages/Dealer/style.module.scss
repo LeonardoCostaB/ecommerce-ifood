@@ -71,6 +71,8 @@
       border-bottom: .4rem solid $beige-500;
       border-radius: .4rem;
 
+      box-shadow: 1px 1px 10px $black-rgba-205;
+
       @include mq(lg, max) {
          width: 45%;
       }
