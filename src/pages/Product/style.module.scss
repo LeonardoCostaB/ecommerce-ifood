@@ -14,7 +14,7 @@
       color: $beige-500;
    }
 
-   .container {
+   .products {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(40rem, 0fr));
       justify-content: center;
@@ -44,6 +44,34 @@
          h5 {
             font-size: 1.8rem;
             text-align: center;
+         }
+      }
+   }
+
+   .other-products {
+      width: 100%;
+      padding: 0 0 3rem;
+
+      &-title {
+         font-size: 1.8rem;
+         text-align: center;
+         color: $beige-500;
+         padding: 2rem 0;
+      }
+
+      &-links {
+         @include Display("", center, center, 1.2rem);
+
+         @include mq(sm, max) {
+            flex-direction: column;
+         }
+
+         a {
+            color: $gray-500;
+
+            &:hover {
+               color: lighten($gray-500, 9);
+            }
          }
       }
    }

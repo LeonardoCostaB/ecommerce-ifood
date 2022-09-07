@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { gql, useQuery } from "@apollo/client";
 
 import { Header } from "../../components/Header";
@@ -66,7 +66,7 @@ export function Product () {
                { titleSection }
             </h1>
 
-            <div className={style.container}>
+            <section className={style.products}>
                { loading && ( <div className={style.loading}>Carregando...</div> ) }
 
                { data?.produtos.length === 0 ? (
@@ -85,7 +85,29 @@ export function Product () {
                      />
                   })
                )}
-            </div>
+            </section>
+
+            <section className={style["other-products"]} id="product">
+               <h2 className={style["other-products-title"]}>Confira também:</h2>
+
+               <div className={style["other-products-links"]}>
+                  <Link to="/produtos/torta-doce">
+                     Tortas Doces
+                  </Link>
+
+                  <Link to="/produtos/torta-salgada">
+                     Tortas Salgadas
+                  </Link>
+
+                  <Link to="/produtos/bolo">
+                     Bolos
+                  </Link>
+
+                  <Link to="/produtos/individual">
+                     Individuais
+                  </Link>
+               </div>
+            </section>
          </main>
 
          <Footer />
