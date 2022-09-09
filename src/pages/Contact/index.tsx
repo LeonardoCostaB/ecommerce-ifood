@@ -14,11 +14,7 @@ export function Contact() {
             <h1 className={style.title}>Contato</h1>
 
             <div className={style.container}>
-               <div className={style["container-map"]}>
-                  <GoogleMaps />
-               </div>
-
-               <div className={style.informations}>
+            <div className={style.informations}>
                   <div className={style["informations-wrapper"]}>
                      <address className={style.address}>
                         <a
@@ -43,7 +39,11 @@ export function Contact() {
                         </a>
                      </address>
 
-                     <span className={style.options}>ou nos visite</span>
+                     <address className={style["address-whats"]}>
+                        <a href="https://wa.me/5519996946584" target="_blank">
+                           (19) 996946584
+                        </a>
+                     </address>
 
                      <address className={style.address}>
                         <MapPin size={24} />
@@ -52,8 +52,10 @@ export function Contact() {
                   </div>
                </div>
 
+               <div className={style["container-map"]}>
+                  <GoogleMaps />
+               </div>
             </div>
-
          </main>
 
          <Footer />
