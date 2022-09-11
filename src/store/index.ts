@@ -1,7 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
+import productReduce from "./module/product-minicart";
 
 export const store = configureStore({
-   reducer: {  }
+   reducer: { productReduce }
 });
 
 export type RootStore = ReturnType<typeof store.getState>;
