@@ -1,3 +1,7 @@
+import React, { useCallback } from "react";
+import { useDispatch } from "react-redux";
+import { setProduct } from "../../store/module/product-minicart";
+
 import style from "./style.module.scss";
 
 interface ProductProps {
@@ -15,6 +19,27 @@ export function ProductApresentation({
    description,
    price
 }: ProductProps) {
+   // const [ productPrice, setProductPrice ] = useState<number>();
+   // const [ productSize, setProductSize ] = useState<string>();
+   const dispatch = useDispatch();
+
+   const saveStorage = useCallback((event: React.MouseEvent<HTMLElement>) => {
+      const datasetImage = event.currentTarget.dataset.image;
+      const datasetName = event.currentTarget.dataset.name;
+
+      dispatch(
+         setProduct({
+            image: datasetImage,
+            name: datasetName,
+         })
+         )
+
+         localStorage.setItem(datasetName as string, JSON.stringify({
+            datasetImage,
+            datasetName
+         }))
+   }, []);
+
    return (
       <div className={style.product}>
          <div className={style["product-image"]}>
@@ -67,7 +92,6 @@ export function ProductApresentation({
                      })}
                   </div>
                </div>
-
             </div>
          </div>
 
@@ -75,6 +99,11 @@ export function ProductApresentation({
             <button
                type="submit"
                className={style["add-cart"]}
+               data-image={image}
+               data-name={name}
+               data-size={size}
+               data-price={price}
+               onClick={(e) => saveStorage(e)}
             >
                Adicionar ao carrinho
             </button>

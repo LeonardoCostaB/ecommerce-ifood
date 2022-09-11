@@ -145,17 +145,14 @@ export function Header() {
                </nav>
 
                <a
-                  href="#"
+                  href="https://ifood.com.br/delivery/campinas-sp/casa-das-tortas---ouro-verde-vila-aeroporto/33e4d52d-bad5-4b17-aace-82b9b86f1af0"
+                  target="_blank"
                   className={style["order-product"]}
                >
-                  Faça o seu pedido
-
-                  <span className={style["order-product-icon"]}>
-                     <img
-                        src={ifood}
-                        alt="clique aqui para acessar nossa conta no ifood"
-                     />
-                  </span>
+                  <img
+                     src={ifood}
+                     alt="clique aqui para acessar nossa conta no ifood"
+                  />
                </a>
 
                <Minicart />

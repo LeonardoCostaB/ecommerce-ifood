@@ -235,41 +235,5 @@
             }
          }
       }
-
-      .order-product {
-         padding: .9rem;
-
-         background-color: $beige-500;
-         color: $beige-400;
-
-         border-radius: .4rem;
-
-         font-weight: 500;
-         text-transform: uppercase;
-
-         transition: .3s all;
-
-         .order-product-icon {
-            display: none;
-
-            @include mq(lg, max) {
-               display: inline-block;
-            }
-         }
-
-         @include mq(lg, max) {
-            padding: .5rem;
-         }
-
-         @include mq(lg, max) {
-            font-size: 0;
-            background-color: transparent;
-         }
-
-         &:hover {
-            background-color: transparent;
-            color: $beige-500;
-         }
-      }
    }
 }

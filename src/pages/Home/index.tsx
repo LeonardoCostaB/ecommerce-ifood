@@ -61,7 +61,7 @@ export function Home() {
                      </Link>
 
                      <div className={style["product-access"]}>
-                        <strong>Torta Doce</strong>
+                        <strong>Tortas Doces</strong>
 
                         <Link to="/produtos/torta-doce">
                            Saiba Mais
@@ -75,7 +75,7 @@ export function Home() {
                      </Link>
 
                      <div className={style["product-access"]}>
-                        <strong>Torta Salgada</strong>
+                        <strong>Tortas Salgadas</strong>
 
                         <Link to="/produtos/torta-salgada">
                            Saiba Mais
@@ -89,7 +89,7 @@ export function Home() {
                      </Link>
 
                      <div className={style["product-access"]}>
-                        <strong>Bolo</strong>
+                        <strong>Bolos</strong>
 
                         <Link to="/produtos/bolo">
                            Saiba Mais

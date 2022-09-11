@@ -1,9 +1,10 @@
+import { GoogleMaps } from "../../components/GoogleMaps";
+import { Envelope, MapPin, WhatsappLogo } from "phosphor-react";
+
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 
 import style from "./style.module.scss";
-import { GoogleMaps } from "../../components/GoogleMaps";
-import { Envelope, MapPin, WhatsappLogo } from "phosphor-react";
 
 export function Contact() {
    return (
@@ -14,7 +15,7 @@ export function Contact() {
             <h1 className={style.title}>Contato</h1>
 
             <div className={style.container}>
-            <div className={style.informations}>
+               <div className={style.informations}>
                   <div className={style["informations-wrapper"]}>
                      <address className={style.address}>
                         <a
