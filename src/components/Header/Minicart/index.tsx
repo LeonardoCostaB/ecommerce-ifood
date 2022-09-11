@@ -67,21 +67,23 @@ export function Minicart() {
                      )}
                   </div>
 
-                  <footer className={style["minicart-footer"]}>
-                     <button
-                        type="button"
-                        className={style["finish-purchase"]}
-                     >
-                        Finalizar compra via whatsapp
-                     </button>
+                  { productMinicart.length > 1 && (
+                     <footer className={style["minicart-footer"]}>
+                        <button
+                           type="button"
+                           className={style["finish-purchase"]}
+                        >
+                           Finalizar compra via whatsapp
+                        </button>
 
-                     <button
-                        type="button"
-                        className={style["finish-purchase"]}
-                     >
-                        Pagar e retirar no local
-                     </button>
-                  </footer>
+                        <button
+                           type="button"
+                           className={style["finish-purchase"]}
+                        >
+                           Pagar e retirar no local
+                        </button>
+                     </footer>
+                  )}
                </div>
             </div>
          </Modal>
