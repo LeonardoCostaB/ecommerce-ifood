@@ -8,7 +8,6 @@ import { RootStore } from "../../../store";
 
 import style from "./style.module.scss";
 
-
 export function Minicart() {
    const [ isActiveMinicart, setIsActiveMinicart ] = useState<boolean>(false);
    const productMinicart = useSelector((store: RootStore) => store.productReduce);
@@ -18,6 +17,8 @@ export function Minicart() {
 
       document.body.classList.toggle("no-scroll")
    }, [isActiveMinicart])
+
+   const total = productMinicart.reduce((index, value) => index + value.price, 0);
 
    return (
       <>
@@ -49,7 +50,7 @@ export function Minicart() {
 
                   <div className={style["minicart-product"]}>
                      { productMinicart.length == 1 ? (
-                        <div className={style["no-product"]}>No momento sua sacola está fazia</div>
+                        <div className={style["no-product"]}>No momento sua sacola está vazia</div>
                      ) : (
                         productMinicart.map((value, key) => {
                            return (
@@ -60,7 +61,16 @@ export function Minicart() {
                                  <div className={style["product-image"]}>
                                     <img src={value.image} alt="" />
                                  </div>
-                                 <span>{ value.name }</span>
+
+                                 <div className={style["product-description"]}>
+                                    <span className={style["product-description-name"]}>
+                                       { value.name }
+                                    </span>
+
+                                    <strong className={style["product-description-price"]}>
+                                       R$ { Number(value.price).toFixed(2).replace(".", ",") }
+                                    </strong>
+                                 </div>
                               </div>
                            );
                         })
@@ -69,19 +79,31 @@ export function Minicart() {
 
                   { productMinicart.length > 1 && (
                      <footer className={style["minicart-footer"]}>
-                        <button
-                           type="button"
-                           className={style["finish-purchase"]}
-                        >
-                           Finalizar compra via whatsapp
-                        </button>
+                        <div className={style.total}>
+                           <span className={style["total-buy"]}>
+                              Total
+                           </span>
 
-                        <button
-                           type="button"
-                           className={style["finish-purchase"]}
-                        >
-                           Pagar e retirar no local
-                        </button>
+                           <strong className={style["total-amount"]}>
+                              R$ { total.toFixed(2).replace(".", ",")}
+                           </strong>
+                        </div>
+
+                        <div className={style.finish}>
+                           <button
+                              type="button"
+                              className={style["finish-purchase"]}
+                           >
+                              Finalizar compra via whatsapp
+                           </button>
+
+                           <button
+                              type="button"
+                              className={style["finish-purchase"]}
+                           >
+                              Pagar e retirar no local
+                           </button>
+                        </div>
                      </footer>
                   )}
                </div>

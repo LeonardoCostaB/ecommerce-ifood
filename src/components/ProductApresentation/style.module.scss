@@ -49,6 +49,10 @@
             @include Display("", center, space-between, "");
             padding-top: 1rem;
 
+            .input-wrapper {
+               @include Display("", center, "", .5rem);
+            }
+
             .product-size, .price {
                font-size: 1.2rem;
                font-weight: 700;
@@ -72,7 +76,6 @@
          font-size: 1.5rem;
          font-weight: 700;
 
-         background-color: $white-500;
          border-radius: .8rem;
 
          background-color: $lilac-300;
@@ -80,9 +83,22 @@
 
          transition: all 0.3s;
 
-         &:hover {
-            background-color: $wine-500;
-            color: $lilac-300;
+         @include mq(lg, min) {
+            &:hover {
+               background-color: $wine-500;
+               color: $lilac-300;
+            }
+         }
+
+         &:disabled {
+            opacity: .5;
+
+            &:hover {
+               background-color: $lilac-300;
+               color: $wine-500;
+
+               cursor: no-drop;
+            }
          }
       }
    }

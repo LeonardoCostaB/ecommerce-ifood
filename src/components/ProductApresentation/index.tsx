@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setProduct } from "../../store/module/product-minicart";
 
@@ -19,25 +19,28 @@ export function ProductApresentation({
    description,
    price
 }: ProductProps) {
-   // const [ productPrice, setProductPrice ] = useState<number>();
-   // const [ productSize, setProductSize ] = useState<string>();
+   const [ valuePrice, setValuePrice ] = useState<number>();
+   const [ isCheckPrice, setIsCheckPrice ] = useState<boolean>(false);
    const dispatch = useDispatch();
+
+   const isChecked = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+      setValuePrice(Number(event.target.value));
+
+      setIsCheckPrice(!isCheckPrice);
+   }, [isCheckPrice]);
 
    const saveStorage = useCallback((event: React.MouseEvent<HTMLElement>) => {
       const datasetImage = event.currentTarget.dataset.image;
       const datasetName = event.currentTarget.dataset.name;
+      const datasetPrice = event.currentTarget.dataset.price;
 
       dispatch(
          setProduct({
             image: datasetImage,
             name: datasetName,
+            price: Number(datasetPrice)
          })
-         )
-
-         localStorage.setItem(datasetName as string, JSON.stringify({
-            datasetImage,
-            datasetName
-         }))
+      );
    }, []);
 
    return (
@@ -69,10 +72,7 @@ export function ProductApresentation({
                   <div className={style["sku-container"]}>
                      {size.map((value, index) => {
                         return (
-                           <span
-                              key={index}
-                              className={style["product-size"]}
-                           >
+                           <span key={index} className={style["product-size"]}>
                               { value }
                            </span>
                         );
@@ -82,12 +82,26 @@ export function ProductApresentation({
                   <div className={style["product-price"]}>
                      { price.map((value, index) => {
                         return(
-                           <strong
+                           <div
                               key={index}
-                              className={style.price}
+                              className={style["input-wrapper"]}
                            >
-                              R$ { value.toFixed(2).replace(".", ",") }
-                           </strong>
+                              <input
+                                 type="checkbox"
+                                 id={`${name}-${value}`}
+                                 value={value}
+                                 defaultChecked={isCheckPrice}
+                                 onChange={(event) => isChecked(event)}
+                              />
+
+                              <label
+                                 key={index}
+                                 htmlFor={`${name}-${value}`}
+                                 className={style.price}
+                              >
+                                 R$ { value.toFixed(2).replace(".", ",") }
+                              </label>
+                           </div>
                         );
                      })}
                   </div>
@@ -102,8 +116,9 @@ export function ProductApresentation({
                data-image={image}
                data-name={name}
                data-size={size}
-               data-price={price}
+               data-price={valuePrice}
                onClick={(e) => saveStorage(e)}
+               disabled={isCheckPrice == false}
             >
                Adicionar ao carrinho
             </button>
