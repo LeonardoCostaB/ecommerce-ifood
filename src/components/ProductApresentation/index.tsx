@@ -30,15 +30,15 @@ export function ProductApresentation({
    }, [isCheckPrice]);
 
    const saveStorage = useCallback((event: React.MouseEvent<HTMLElement>) => {
-      const datasetImage = event.currentTarget.dataset.image;
-      const datasetName = event.currentTarget.dataset.name;
-      const datasetPrice = event.currentTarget.dataset.price;
+      const image = event.currentTarget.dataset.image;
+      const name = event.currentTarget.dataset.name;
+      const price = event.currentTarget.dataset.price;
 
       dispatch(
          setProduct({
-            image: datasetImage,
-            name: datasetName,
-            price: Number(datasetPrice)
+            image,
+            name,
+            price: Number(price)
          })
       );
    }, []);
@@ -91,7 +91,9 @@ export function ProductApresentation({
                                  id={`${name}-${value}`}
                                  value={value}
                                  defaultChecked={isCheckPrice}
+                                 disabled={isCheckPrice && valuePrice != value}
                                  onChange={(event) => isChecked(event)}
+                                 className={style.checkbox}
                               />
 
                               <label

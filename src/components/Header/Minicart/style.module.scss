@@ -100,11 +100,20 @@
          }
 
          &-description {
+            flex: 1;
             @include Display(column, "", "", .5rem);
+
+            &-container {
+               @include Display("", center, space-between, "");
+            }
 
             &-name {
                font-size: 1.2rem;
                color: $gray-100;
+            }
+
+            &-trash {
+               cursor: pointer;
             }
          }
       }

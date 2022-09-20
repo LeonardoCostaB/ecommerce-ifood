@@ -1,22 +1,35 @@
-import { useCallback, useState } from "react";
-import { ShoppingCart } from "phosphor-react";
+import { useCallback, useEffect, useState } from "react";
+import { ShoppingCart, Trash } from "phosphor-react";
 import { useSelector } from "react-redux";
 
 import { Modal } from "../../Modal";
 import { CloseButton } from "../../CloseButton";
 import { RootStore } from "../../../store";
+import { ProductMinicartState } from "../../../store/module/product-minicart"
+import { useDispatch } from "react-redux";
+import { removeProduct } from "../../../store/module/product-minicart";
+
 
 import style from "./style.module.scss";
 
 export function Minicart() {
    const [ isActiveMinicart, setIsActiveMinicart ] = useState<boolean>(false);
-   const productMinicart = useSelector((store: RootStore) => store.productReduce);
+   const dispatch = useDispatch();
+   let productMinicart = useSelector((store: RootStore) => store.productReduce);
+   // const [ products, setProducts ] = useState<ProductMinicartState[]>()
+
 
    const isToggleMinicart = useCallback(() => {
       setIsActiveMinicart(!isActiveMinicart)
 
       document.body.classList.toggle("no-scroll")
    }, [isActiveMinicart])
+
+   const deleteRedux = useCallback((name: string) => {
+      dispatch(
+         removeProduct({name})
+      )
+   } , [])
 
    const total = productMinicart.reduce((index, value) => index + value.price, 0);
 
@@ -31,9 +44,11 @@ export function Minicart() {
                size={30}
             />
 
-            <span className={style["count-minicart"]}>{ productMinicart.length == 1 ? (
-               <>0</>
-            ) : ((productMinicart.length) - 1 ) }</span>
+            <span className={style["count-minicart"]}>
+               { productMinicart.length == 1 ? (
+                  0
+               ) : ((productMinicart.length) - 1 ) }
+            </span>
          </button>
 
          <Modal
@@ -63,9 +78,18 @@ export function Minicart() {
                                  </div>
 
                                  <div className={style["product-description"]}>
-                                    <span className={style["product-description-name"]}>
-                                       { value.name }
-                                    </span>
+                                    <div className={style["product-description-container"]}>
+                                       <span className={style["product-description-name"]}>
+                                          { value.name }
+                                       </span>
+
+                                       <Trash 
+                                          size={15} 
+                                          className={style["product-description-trash"]}
+                                          onClick={() => deleteRedux(value.name)}   
+                                       />
+
+                                    </div>
 
                                     <strong className={style["product-description-price"]}>
                                        R$ { Number(value.price).toFixed(2).replace(".", ",") }

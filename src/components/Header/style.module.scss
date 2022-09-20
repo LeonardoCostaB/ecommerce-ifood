@@ -129,6 +129,8 @@
                }
 
                .link-dropdown {
+                  cursor: pointer;
+
                   @include mq(lg, min) {
                      &::before {
                         content: "";
