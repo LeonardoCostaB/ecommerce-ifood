@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { CaretDown, List } from "phosphor-react";
 import { Link } from "react-router-dom";
 import { Link as LinkScroll } from "react-scroll";
@@ -44,61 +44,77 @@ export function Header() {
    const [ isActiveMenuMobile, setIsActiveMenuMobile ] = useState<boolean>(false);
 
    const locationURL = useLocation();
+   const { product } = useParams<{ product: string }>();
 
    const currentLocation = locationURL.pathname;
 
    return (
-      <>
-         <header className={style["header-container"]}>
-            <button
-               type="button"
-               className={style["menu-hamburguer"]}
-               onClick={() => setIsActiveMenuMobile(true)}
+      <header className={style["header-container"]}>
+         <button
+            type="button"
+            className={style["menu-hamburguer"]}
+            onClick={() => setIsActiveMenuMobile(true)}
+         >
+            <List
+               size={24}
+               color="#000000"
+               weight="bold"
+            />
+         </button>
+
+         <Link
+            to="/"
+            className={style["container-logo"]}
+         >
+            <img
+               src={logo}
+               alt="logo Dolce Cannella"
+               className={style.logo}
+            />
+
+            <span className={style.slogan}>As melhores sobremesas artesanais</span>
+         </Link>
+
+         <div className={style["container-nav-link"]}>
+            <nav
+               className={`${style["header-nav"]} ${isActiveMenuMobile && style.open}`}
             >
-               <List
-                  size={24}
-                  color="#000000"
-                  weight="bold"
-               />
-            </button>
+               <ul className={`${style["list-container"]} ${isActiveMenuMobile && style.show}`}>
+                  <CloseButton
+                     event={() => setIsActiveMenuMobile(false)}
+                  />
 
-            <Link
-               to="/"
-               className={style["container-logo"]}
-            >
-               <img
-                  src={logo}
-                  alt="logo Dolce Cannella"
-                  className={style.logo}
-               />
-
-               <span className={style.slogan}>As melhores sobremesas artesanais</span>
-            </Link>
-
-            <div className={style["container-nav-link"]}>
-               <nav
-                  className={`${style["header-nav"]} ${isActiveMenuMobile && style.open}`}
-               >
-                  <ul className={`${style["list-container"]} ${isActiveMenuMobile && style.show}`}>
-                     <CloseButton
-                        event={() => setIsActiveMenuMobile(false)}
-                     />
-
-                     {Object.entries(optionsNavigationLink).map(([ key, value ]) => {
-                        return <li
-                           key={key}
-                           className={currentLocation == value.link ?
-                              `${style["list-navigation"]} ${style.active}` :
-                              style["list-navigation"]}
-                        >
-                           { value.name === "Menu" ? (
-                              <>
+                  {Object.entries(optionsNavigationLink).map(([ key, value ]) => {
+                     return <li
+                        key={key}
+                        className={currentLocation == value.link ?
+                           `${style["list-navigation"]} ${style.active}` :
+                           style["list-navigation"]}
+                     >
+                        { value.name === "Menu" ? (
+                           <>
+                              { currentLocation === "/" || currentLocation == `/produtos/${product}` ? (
                                  <LinkScroll
                                     to={value.link}
                                     smooth={true}
                                     spy={true}
                                     offset={5}
                                     duration={500}
+                                    className={style["link-dropdown"]}
+                                    onMouseOver={() => setIsActiveSubmenu(true)}
+                                 >
+                                    Menu
+   
+                                    <span
+                                       className={`${style["open-submenu"]} ${isActiveSubmenu && style["rotate-arrow"]}`}
+                                       onClick={() => setIsActiveSubmenu(!isActiveSubmenu)}
+                                    >
+                                       <CaretDown size={16} />
+                                    </span>
+                                 </LinkScroll>
+                              ) : (
+                                 <Link
+                                    to="/produtos/torta-doce"
                                     className={style["link-dropdown"]}
                                     onMouseOver={() => setIsActiveSubmenu(true)}
                                  >
@@ -110,54 +126,54 @@ export function Header() {
                                     >
                                        <CaretDown size={16} />
                                     </span>
-                                 </LinkScroll>
+                                 </Link>
+                              ) }
+   
+                              { isActiveSubmenu && (
+                                 <div
+                                    className={style["submenu"]}
+                                 >
+                                    <Link to="/produtos/torta-doce">Tortas Doces</Link>
 
-                                 { isActiveSubmenu && (
-                                    <div
-                                       className={style["submenu"]}
-                                    >
-                                       <Link to="/produtos/torta-doce">Tortas Doces</Link>
+                                    <Link to="/produtos/torta-salgada">Tortas Salgadas</Link>
 
-                                       <Link to="/produtos/torta-salgada">Tortas Salgadas</Link>
+                                    <Link to="/produtos/bolo">Bolos</Link>
 
-                                       <Link to="/produtos/bolo">Bolos</Link>
+                                    <Link to="/produtos/individual">Individuais</Link>
+                                 </div>
+                              )}
+                           </>
+                        ) : (
+                           <Link
+                              to={value.link}
+                              className={style["link"]}
+                           >
+                              { value.name }
+                           </Link>
+                        )}
+                     </li>
+                  })}
+               </ul>
 
-                                       <Link to="/produtos/individual">Individuais</Link>
-                                    </div>
-                                 )}
-                              </>
-                           ) : (
-                              <Link
-                                 to={value.link}
-                                 className={style["link"]}
-                              >
-                                 { value.name }
-                              </Link>
-                           )}
-                        </li>
-                     })}
-                  </ul>
+               <div
+                  className={`hidden-modal ${isActiveMenuMobile && "visibility"}`}
+                  onClick={() => setIsActiveMenuMobile(false)}
+               />
+            </nav>
 
-                  <div
-                     className={`hidden-modal ${isActiveMenuMobile && "visibility"}`}
-                     onClick={() => setIsActiveMenuMobile(false)}
-                  />
-               </nav>
+            <a
+               href="https://ifood.com.br/delivery/campinas-sp/casa-das-tortas---ouro-verde-vila-aeroporto/33e4d52d-bad5-4b17-aace-82b9b86f1af0"
+               target="_blank"
+               className={style["order-product"]}
+            >
+               <img
+                  src={ifood}
+                  alt="clique aqui para acessar nossa conta no ifood"
+               />
+            </a>
 
-               <a
-                  href="https://ifood.com.br/delivery/campinas-sp/casa-das-tortas---ouro-verde-vila-aeroporto/33e4d52d-bad5-4b17-aace-82b9b86f1af0"
-                  target="_blank"
-                  className={style["order-product"]}
-               >
-                  <img
-                     src={ifood}
-                     alt="clique aqui para acessar nossa conta no ifood"
-                  />
-               </a>
-
-               <Minicart />
-            </div>
-         </header>
-      </>
+            <Minicart />
+         </div>
+      </header>
    );
 };

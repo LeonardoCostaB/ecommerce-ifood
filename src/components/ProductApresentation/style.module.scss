@@ -43,6 +43,12 @@
             color: $gray-500;
 
             overflow-y: auto;
+
+            .glutem {
+               display: block;
+               padding: .5rem;
+               text-transform: uppercase;
+            }
          }
 
          .sku-container, .product-price {
@@ -141,4 +147,24 @@
          }
       }
    }
+}
+
+.message-cart {
+   position: fixed;
+   bottom: 25px;
+   left: 25px;
+
+   max-width: 350px;
+   height: 50px;
+
+   display: flex;
+   align-items: center;
+   justify-content: center;
+
+   padding: 0 16px;
+
+   background-color: $beige-500;
+   color: $white-500;
+
+   border-radius: 8px;
 }
