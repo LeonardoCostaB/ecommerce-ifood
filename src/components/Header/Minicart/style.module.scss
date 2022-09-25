@@ -62,6 +62,7 @@
       box-shadow: 0px -4px 10px $black-rgba-205;
 
       @include mq(lg, max) {
+         padding: 3rem 1.6rem;
          text-align: left;
       }
    }
@@ -101,7 +102,7 @@
 
          &-description {
             flex: 1;
-            @include Display(column, "", "", .5rem);
+            @include Display(column, "", "", 1.06rem);
 
             &-container {
                @include Display("", center, space-between, "");
@@ -117,7 +118,29 @@
             }
 
             &-quantity {
+               display: flex;
+               align-items: center;
+
+               max-width: 9.8rem;
+
+               border: 1px solid $gray-100;
+
                font-size: 1.2rem;
+
+               .increment {
+                  padding: 0 1rem;
+                  color: $gray-100;
+               }
+
+               .value {
+                  flex: 1;
+                  text-align: center;
+               }
+
+               .decrement {
+                  padding: 0 1rem;
+                  color: $gray-100;
+               }
             }
          }
       }
@@ -153,6 +176,8 @@
          padding: 2rem 0 0;
 
          &-purchase {
+            @include Display("", center, center, 0);
+
             width: 100%;
             height: 4.5rem;
 
@@ -167,6 +192,5 @@
             }
          }
       }
-
    }
 }

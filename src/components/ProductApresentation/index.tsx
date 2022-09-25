@@ -32,7 +32,7 @@ export function ProductApresentation({
       setIsCheckPrice(!isCheckPrice);
    }, [isCheckPrice]);
 
-   const saveStorage = useCallback((event: React.MouseEvent<HTMLElement>) => {
+   const setInformations = useCallback((event: React.MouseEvent<HTMLElement>) => {
       const id = event.currentTarget.dataset.id;
       const image = event.currentTarget.dataset.image;
       const name = event.currentTarget.dataset.name;
@@ -115,7 +115,7 @@ export function ProductApresentation({
                                  <label
                                     key={index}
                                     htmlFor={`${name}-${value}`}
-                                    className={style.price}
+                                    className={`${style.price} ${isCheckPrice && valuePrice != value && style.disabled}`}
                                  >
                                     R$ { value.toFixed(2).replace(".", ",") }
                                  </label>
@@ -136,7 +136,7 @@ export function ProductApresentation({
                   data-name={name}
                   data-size={size}
                   data-price={valuePrice}
-                  onClick={(e) => saveStorage(e)}
+                  onClick={(e) => setInformations(e)}
                   disabled={isCheckPrice == false}
                >
                   Adicionar ao carrinho

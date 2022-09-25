@@ -65,20 +65,20 @@
                appearance: none;
                border: .1rem solid $black-rgba-205 ;
                cursor: pointer;
-               
+
                &:checked {
                   background-color: white;
                   position: relative;
-                  
+
                   &::after {
                      content: "";
-                     
+
                      position: absolute;
                      top: 50%;
-                     
+
                      width: 100%;
                      height: 100%;
-                     
+
                      background-color: $beige-500;
 
                      transform: translateY(-50%);
@@ -86,7 +86,9 @@
                }
 
                &:disabled {
-                  &:hover {  
+                  opacity: .5;
+
+                  &:hover {
                      cursor: no-drop;
                   }
                }
@@ -98,7 +100,13 @@
                font-weight: 700;
 
                color: $gray-500;
+            }
 
+            .price {
+               &.disabled {
+                  opacity: .5;
+                  cursor: no-drop;
+               }
             }
          }
       }

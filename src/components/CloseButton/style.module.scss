@@ -3,10 +3,8 @@
 
 .close-menu {
    position: absolute;
-   top: 0;
-   right: 0;
-
-   margin: 16px;
+   top: 2.5rem;
+   right: 1.6rem;
 
    @include mq(lg, min) {
       display: none;

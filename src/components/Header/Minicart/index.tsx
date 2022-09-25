@@ -1,35 +1,63 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { ShoppingCart, Trash } from "phosphor-react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { Modal } from "../../Modal";
 import { CloseButton } from "../../CloseButton";
 import { RootStore } from "../../../store";
-import { removeProduct } from "../../../store/module/product-minicart";
-
+import {
+   incrementQuantity,
+   decrementQuantity,
+   removeProduct
+} from "../../../store/module/product-minicart";
 
 import style from "./style.module.scss";
 
 export function Minicart() {
    const [ isActiveMinicart, setIsActiveMinicart ] = useState<boolean>(false);
-
-   const dispatch = useDispatch();
+   const [ orderCompletionRequest, setOrderCompletionRequest ] = useState<string>();
 
    let productMinicart = useSelector((store: RootStore) => store.productReduce);
+   const dispatch = useDispatch();
 
    const isToggleMinicart = useCallback(() => {
       setIsActiveMinicart(!isActiveMinicart)
 
       document.body.classList.toggle("no-scroll")
    }, [isActiveMinicart])
-
    const deleteRedux = useCallback((id: string) => {
       dispatch(
          removeProduct({ id })
       )
    } , [])
+   const updateQuantity = useCallback((id: string, name: string) => {
+      if(name === "increment") {
+         dispatch(
+            incrementQuantity({ id })
+         )
+      } else if(name === "decrement") {
+         dispatch(
+            decrementQuantity({ id })
+         )
+      }
+   }, [])
 
    const total = productMinicart.reduce((index, value) => index + (value.price * value.quantity), 0);
+
+   useEffect(() => {
+      if(productMinicart.length > 1) {
+         const removeFirstState = productMinicart.slice(1, 100);
+         const request = removeFirstState.map(value => {
+            return `%0Anome: ${value.name} %0Aquantidade: ${value.quantity} %0Avalor: R$ ${(value.price * value.quantity).toFixed(2).replace(".", ",")}.%0A`
+         })
+
+         const id = Math.random().toFixed(9).replace(".", "");
+
+         const apiURL = `https://api.whatsapp.com/send?phone=5522988724559&text=Olá casa das tortas, pedido finalizado: ${request}%0A Total: R$ ${total.toFixed(2).replace(".", ",")}%0A numero do pedido: ${id}`
+
+         setOrderCompletionRequest(apiURL);
+      }
+   }, [productMinicart])
 
    return (
       <>
@@ -45,7 +73,7 @@ export function Minicart() {
             <span className={style["count-minicart"]}>
                { productMinicart.length == 1 ? (
                   0
-               ) : ((productMinicart.length) - 1 ) }
+               ) : (productMinicart.length) - 1 }
             </span>
          </button>
 
@@ -81,8 +109,8 @@ export function Minicart() {
                                           { value.name }
                                        </span>
 
-                                       <Trash 
-                                          size={15} 
+                                       <Trash
+                                          size={15}
                                           className={style["product-description-trash"]}
                                           onClick={() => deleteRedux(value.id)}
                                        />
@@ -93,7 +121,25 @@ export function Minicart() {
                                        R$ { Number(value.price * value.quantity).toFixed(2).replace(".", ",") }
                                     </strong>
 
-                                    <span className={style["product-description-quantity"]}>quantidade { value.quantity }</span>
+                                    <span className={style["product-description-quantity"]}>
+                                       <button
+                                          type="button"
+                                          className={style.increment}
+                                          onClick={() => updateQuantity(value.id, "increment")}
+                                       >
+                                          +
+                                       </button>
+
+                                       <strong className={style.value}>{ value.quantity }</strong>
+
+                                       <button
+                                          type="button"
+                                          className={style.decrement}
+                                          onClick={() => updateQuantity(value.id , "decrement")}
+                                       >
+                                          -
+                                       </button>
+                                    </span>
                                  </div>
                               </div>
                            );
@@ -114,19 +160,14 @@ export function Minicart() {
                         </div>
 
                         <div className={style.finish}>
-                           <button
+                           <a
                               type="button"
+                              href={orderCompletionRequest}
+                              target="_blank"
                               className={style["finish-purchase"]}
                            >
                               Finalizar compra via whatsapp
-                           </button>
-
-                           <button
-                              type="button"
-                              className={style["finish-purchase"]}
-                           >
-                              Pagar e retirar no local
-                           </button>
+                           </a>
                         </div>
                      </footer>
                   )}

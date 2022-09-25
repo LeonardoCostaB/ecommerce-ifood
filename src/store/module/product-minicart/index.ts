@@ -16,7 +16,7 @@ const productMinicartReduce = createSlice({
       image: "",
       name: "",
       price: 0,
-      quantity: 0
+      quantity: 1
    } as ProductMinicartState],
 
    reducers: {
@@ -48,10 +48,36 @@ const productMinicartReduce = createSlice({
       removeProduct(state, actions)  {
          const { payload } = actions
 
-         return state.filter(el => el.id !== payload.id );
+         return state.filter(el => el.id !== payload.id);
+      },
+
+      incrementQuantity(state, actions) {
+         return state.map(value => {
+            return value.id === actions.payload.id ?
+               {
+                  id: value.id,
+                  image: value.image,
+                  name: value.name,
+                  price: value.price,
+                  quantity: value.quantity + 1
+               } : value
+         });
+      },
+
+      decrementQuantity(state, actions) {
+         return state.map(value => {
+            return value.id === actions.payload.id ?
+            {
+               id: value.id,
+               image: value.image,
+               name: value.name,
+               price: value.price,
+               quantity: value.quantity <= 1 ? 1 : value.quantity - 1
+            } : value
+         });
       }
    }
 });
 
-export const { setProduct, removeProduct } = productMinicartReduce.actions;
+export const { setProduct, removeProduct, incrementQuantity, decrementQuantity } = productMinicartReduce.actions;
 export default productMinicartReduce.reducer;
