@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { useLocation } from "react-router-dom";
 import { setProduct } from "../../store/module/product-minicart";
 
 import style from "./style.module.scss";
@@ -9,6 +10,7 @@ interface ProductProps {
    name: string;
    size: [string];
    description: string;
+   productAvailable: boolean;
    glutem: boolean;
    price: [number];
 }
@@ -18,6 +20,7 @@ export function ProductApresentation({
    name,
    size,
    description,
+   productAvailable,
    glutem,
    price
 }: ProductProps) {
@@ -25,6 +28,13 @@ export function ProductApresentation({
    const [ isCheckPrice, setIsCheckPrice ] = useState<boolean>(false);
    const [ addCart, setAddCart ] = useState<boolean>(false);
    const dispatch = useDispatch();
+
+   const location = useLocation();
+   const productName = location.pathname;
+   const urlSaltPieCake = productName == "/produtos/torta-salgada" || productName == "/produtos/bolo";
+   const urlIndividual = productName == "/produtos/individual";
+
+   console.log(productName)
 
    const isChecked = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
       setValuePrice(Number(event.target.value));
@@ -69,7 +79,6 @@ export function ProductApresentation({
 
             <div className={style["product-title"]}>
                <div className={style["product-name"]}>
-
                   <h4 className={style.name}>
                      { name }
                   </h4>
@@ -82,66 +91,71 @@ export function ProductApresentation({
                      { glutem && <span className={style.glutem}>contém glutem</span>}
                   </p>
 
-                  <div className={style.sku}>
-                     <strong>Tamanhos e preços disponível</strong>
+                  { productAvailable && (
+                     <div className={style.sku}>
+                        <strong>Tamanhos e preços disponível</strong>
 
-                     <div className={style["sku-container"]}>
-                        {size.map((value, index) => {
-                           return (
-                              <span key={index} className={style["product-size"]}>
-                                 { value }
-                              </span>
-                           );
-                        })}
-                     </div>
+                        <div className={`${style["sku-container"]} ${urlSaltPieCake && style["salt-pie-cake"]} ${urlIndividual && style.individual}`}>
+                           { size.map((value, index) => {
+                              return (
+                                 <span key={index} className={style["product-size"]}>
+                                    { value }
+                                 </span>
+                              );
+                           })}
+                        </div>
 
-                     <div className={style["product-price"]}>
-                        { price.map((value, index) => {
-                           return(
-                              <div
-                                 key={index}
-                                 className={style["input-wrapper"]}
-                              >
-                                 <input
-                                    type="checkbox"
-                                    id={`${name}-${value}`}
-                                    value={value}
-                                    defaultChecked={isCheckPrice}
-                                    disabled={isCheckPrice && valuePrice != value}
-                                    onChange={(event) => isChecked(event)}
-                                    className={style.checkbox}
-                                 />
-
-                                 <label
+                        <div className={`${style["product-price"]} ${ urlSaltPieCake && style["salt-pie-cake"]} ${urlIndividual && style.individual}`}>
+                           { price.map((value, index) => {
+                              return(
+                                 <div
                                     key={index}
-                                    htmlFor={`${name}-${value}`}
-                                    className={`${style.price} ${isCheckPrice && valuePrice != value && style.disabled}`}
+                                    className={style["input-wrapper"]}
                                  >
-                                    R$ { value.toFixed(2).replace(".", ",") }
-                                 </label>
-                              </div>
-                           );
-                        })}
+                                    <input
+                                       type="checkbox"
+                                       id={`${name}-${value}`}
+                                       value={value}
+                                       defaultChecked={isCheckPrice}
+                                       disabled={isCheckPrice && valuePrice != value}
+                                       onChange={(event) => isChecked(event)}
+                                       className={style.checkbox}
+                                    />
+
+                                    <label
+                                       key={index}
+                                       htmlFor={`${name}-${value}`}
+                                       className={`${style.price} ${isCheckPrice && valuePrice != value && style.disabled}`}
+                                    >
+                                       R$ { value.toFixed(2).replace(".", ",") }
+                                    </label>
+                                 </div>
+                              );
+                           })}
+                        </div>
                      </div>
-                  </div>
+                  )}
                </div>
             </div>
 
-            <div className={style["container-button"]}>
-               <button
-                  type="submit"
-                  className={style["add-cart"]}
-                  data-id={`${name}-${valuePrice}`}
-                  data-image={image}
-                  data-name={name}
-                  data-size={size}
-                  data-price={valuePrice}
-                  onClick={(e) => setInformations(e)}
-                  disabled={isCheckPrice == false}
-               >
-                  Adicionar ao carrinho
-               </button>
-            </div>
+            { productAvailable && (
+               <div className={style["container-button"]}>
+                  <button
+                     type="submit"
+                     className={style["add-cart"]}
+                     data-id={`${name}-${valuePrice}`}
+                     data-image={image}
+                     data-name={name}
+                     data-size={size}
+                     data-price={valuePrice}
+                     onClick={(e) => setInformations(e)}
+                     disabled={isCheckPrice == false}
+                  >
+                     Adicionar ao carrinho
+                  </button>
+               </div>
+            )}
+
          </div>
 
          { addCart && (

@@ -5,6 +5,7 @@
    @include Display(column, "", "", "");
 
    max-width: 45rem;
+   min-height: 53.8rem;
 
    background-color: $white-500;
 
@@ -54,6 +55,14 @@
          .sku-container, .product-price {
             @include Display("", center, space-between, "");
             padding-top: 1rem;
+
+            &.salt-pie-cake {
+               justify-content: space-evenly
+            }
+
+            &.individual {
+               justify-content: center;
+            }
 
             .input-wrapper {
                @include Display("", center, "", .5rem);

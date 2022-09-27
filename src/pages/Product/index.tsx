@@ -15,6 +15,7 @@ const GET_PRODUCT_BY_CATEGORY_QUERY = gql`
          name,
          size,
          description,
+         productAvailable,
          glutem,
          price
       }
@@ -30,6 +31,7 @@ interface GetProductBySlugResponse {
       name: string;
       size: [string];
       description: string;
+      productAvailable: boolean;
       glutem: boolean;
       price: [number]
    }[]
@@ -83,6 +85,7 @@ export function Product () {
                         name={value.name}
                         size={value.size}
                         description={value.description}
+                        productAvailable={value.productAvailable}
                         glutem={value.glutem}
                         price={value.price}
                      />
@@ -111,8 +114,6 @@ export function Product () {
                   </Link>
                </div>
             </section>
-
-            
          </main>
 
          <Footer />

@@ -1,4 +1,5 @@
 import { useCallback, useState } from "react";
+import { gql, useMutation } from "@apollo/client";
 import {
    Form,
    Field,
@@ -34,12 +35,45 @@ const initialValuesFormik = {
    message: ""
 };
 
+const CREATE_DISTRIBUTOR_MUTATION = gql`
+   mutation CreateDistributor (
+      $name: String!,
+      $lastName: String!,
+      $email:String!,
+      $companyName: String,
+      $businessLocation: String!,
+      $dealerHistory: String!
+      ) {
+      createDistributor(data: {
+         name: $name,
+         lastName: $lastName,
+         email: $email,
+         companyName: $companyName,
+         businessLocation: $businessLocation,
+         dealerHistory: $dealerHistory,
+         }) {
+         id
+      }
+   }
+`
+
 export function Dealer() {
+   const [ createDistributor, { loading } ] = useMutation(CREATE_DISTRIBUTOR_MUTATION);
+
    const handleSubmitForm = useCallback((
       value: FormikDealerValues,
       { resetForm }: FormikHelpers<FormikDealerValues>
     ) => {
-      console.log(value)
+      createDistributor({
+         variables: {
+            name: value.name,
+            lastName: value.lastName,
+            email: value.email,
+            companyName: value.companyName,
+            businessLocation: "São Paulo",
+            dealerHistory: value.message
+         }
+      })
 
       resetForm();
    }, [])
@@ -239,7 +273,11 @@ export function Dealer() {
                               className={style["submit-form"]}
                               disabled={ !(dirty && isValid && (values.city == true || values.state == true)) }
                            >
-                              Enviar
+                              { loading ? (
+                                 <div className={style["lds-dual-ring"]} />
+                              ) : (
+                                 <>Enviar</>
+                              )}
                            </button>
                         </div>
                      </Form>

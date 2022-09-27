@@ -154,7 +154,6 @@
                .input-checkbox {
                   width: fit-content;
                   height: auto;
-                  // border-radius: 50%;
                }
             }
          }
@@ -180,6 +179,34 @@
                font-size: 1.2rem;
                font-weight: 700;
                text-transform: uppercase;
+
+               .lds-dual-ring {
+                  @include Display("", center, center, "");
+
+                  &:after {
+                     content: " ";
+
+                     display: block;
+
+                     width: 14px;
+                     height: 14px;
+
+                     border-radius: 50%;
+                     border: 1px solid $white-500;
+                     border-color: $white-500 transparent $white-500 transparent;
+
+                     animation: lds-dual-ring 1.2s linear infinite;
+                  }
+
+                  @keyframes lds-dual-ring {
+                     0% {
+                       transform: rotate(0deg);
+                     }
+                     100% {
+                       transform: rotate(360deg);
+                     }
+                  }
+               }
 
                &:disabled {
                   opacity: .5;
