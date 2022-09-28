@@ -57,6 +57,8 @@ export function ProductApresentation({
          })
       );
 
+      setIsCheckPrice(false);
+
       setAddCart(true);
    }, []);
 
@@ -118,6 +120,7 @@ export function ProductApresentation({
                                        value={value}
                                        defaultChecked={isCheckPrice}
                                        disabled={isCheckPrice && valuePrice != value}
+                                       checked={isCheckPrice && valuePrice == value}
                                        onChange={(event) => isChecked(event)}
                                        className={style.checkbox}
                                     />

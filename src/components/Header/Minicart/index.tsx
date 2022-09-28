@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { ShoppingCart, Trash } from "phosphor-react";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -12,6 +12,8 @@ import {
 } from "../../../store/module/product-minicart";
 
 import style from "./style.module.scss";
+
+import ifood from "../../../assets/svgs/ifood.svg";
 
 export function Minicart() {
    const [ isActiveMinicart, setIsActiveMinicart ] = useState<boolean>(false);
@@ -167,6 +169,18 @@ export function Minicart() {
                               className={style["finish-purchase"]}
                            >
                               Finalizar compra via whatsapp
+                           </a>
+
+                           <span className={style["finish-options-ifood"]}>
+                              Ou em caso de entrega, por favor finalize pelo ifood
+                           </span>
+
+                           <a
+                              href="https://ifood.com.br/delivery/campinas-sp/casa-das-tortas---ouro-verde-vila-aeroporto/33e4d52d-bad5-4b17-aace-82b9b86f1af0"
+                              target="_blank"
+                              className={style["finish-ifood"]}
+                           >
+                              Finalizar compra via ifood
                            </a>
                         </div>
                      </footer>
