@@ -55,7 +55,7 @@ export function Minicart() {
 
          const id = Math.random().toFixed(9).replace(".", "");
 
-         const apiURL = `https://api.whatsapp.com/send?phone=5522988724559&text=Olá casa das tortas, pedido finalizado: ${request}%0A Total: R$ ${total.toFixed(2).replace(".", ",")}%0A numero do pedido: ${id}`
+         const apiURL = `https://api.whatsapp.com/send?phone=5519996946584&text=Olá casa das tortas, pedido finalizado: ${request}%0A Total: R$ ${total.toFixed(2).replace(".", ",")}%0A numero do pedido: ${id}`
 
          setOrderCompletionRequest(apiURL);
       }

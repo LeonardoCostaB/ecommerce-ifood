@@ -239,3 +239,34 @@
       }
    }
 }
+
+.submit-success, .submit-error {
+   position: fixed;
+   bottom: 25px;
+   left: 25px;
+
+   max-width: 350px;
+   height: 50px;
+
+   display: flex;
+   align-items: center;
+   justify-content: center;
+
+   padding: 0 16px;
+
+   font-size: 1.2rem;
+   font-weight: 500;
+   line-height: 1.4rem;
+
+   color: $white-500;
+
+   border-radius: 5px;
+}
+
+.submit-success {
+   background-color: green;
+}
+
+.submit-error {
+   background-color: red;
+}

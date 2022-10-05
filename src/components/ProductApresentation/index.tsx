@@ -34,8 +34,6 @@ export function ProductApresentation({
    const urlSaltPieCake = productName == "/produtos/torta-salgada" || productName == "/produtos/bolo";
    const urlIndividual = productName == "/produtos/individual";
 
-   console.log(productName)
-
    const isChecked = useCallback((event: React.ChangeEvent<HTMLInputElement>) => {
       setValuePrice(Number(event.target.value));
 

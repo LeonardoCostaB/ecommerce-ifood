@@ -51,31 +51,43 @@ const CREATE_DISTRIBUTOR_MUTATION = gql`
          companyName: $companyName,
          businessLocation: $businessLocation,
          dealerHistory: $dealerHistory,
-         }) {
-         id
-      }
+         }) { name }
    }
 `
 
 export function Dealer() {
-   const [ createDistributor, { loading } ] = useMutation(CREATE_DISTRIBUTOR_MUTATION);
+   const [ createDistributor, { loading, error } ] = useMutation(CREATE_DISTRIBUTOR_MUTATION);
+   const [ feedbackRegister, setFeedbackRegister ] = useState<"success" | "error" | "initial">("initial");
 
-   const handleSubmitForm = useCallback((
+   const handleSubmitForm = useCallback(async (
       value: FormikDealerValues,
       { resetForm }: FormikHelpers<FormikDealerValues>
     ) => {
-      createDistributor({
-         variables: {
-            name: value.name,
-            lastName: value.lastName,
-            email: value.email,
-            companyName: value.companyName,
-            businessLocation: "São Paulo",
-            dealerHistory: value.message
-         }
-      })
+      try {
+         await createDistributor({
+            variables: {
+               name: value.name,
+               lastName: value.lastName,
+               email: value.email,
+               companyName: value.companyName,
+               businessLocation: "São Paulo",
+               dealerHistory: value.message
+            }
+         })
+         setFeedbackRegister("success");
 
-      resetForm();
+         resetForm();
+
+         setInterval(() => {
+            setFeedbackRegister("initial");
+         }, 7000)
+      } catch (error) {
+         setFeedbackRegister("error");
+
+         setInterval(() => {
+            setFeedbackRegister("initial");
+         }, 7000)
+      }
    }, [])
 
    return (
@@ -285,6 +297,16 @@ export function Dealer() {
                </Formik>
             </div>
          </main>
+
+         { feedbackRegister == "success" && (
+            <div className={style["submit-success"]}>
+               Agradecemos seu interesse, logo mais nossa equipe entrara em contato.
+            </div>
+         ) || feedbackRegister == "error" && (
+            <div className={style["submit-error"]}>
+               Infelizmente não conseguimos concluir o seu cadastro, tente novamente.
+            </div>
+         ) }
 
          <Footer />
       </>
