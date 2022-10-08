@@ -23,6 +23,5 @@ export default yup.object().shape({
 
    message: yup
       .string()
-      .required("Messagem obrigatória")
       .min(5, "conte um pouco mais sobre você")
 });

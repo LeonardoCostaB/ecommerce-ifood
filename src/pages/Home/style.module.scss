@@ -27,11 +27,27 @@
          padding-bottom: 1.5rem;
 
          font-family: 'Quicksand', sans-serif;
+         font-size: 3.2rem;
+         font-weight: 700;
+
+         @media screen and (max-width: 1100px) {
+            font-size: 2.8rem;
+         }
+
+         @include mq(md, max) {
+            font-size: 2.4rem;
+         }
       }
 
       .description {
          font-family: 'Roboto Slab', serif;
+         font-size: 2rem;
+         font-weight: 700;
          text-align: center;
+
+         @media screen and (max-width: 1100px) {
+            font-size: 1.6rem;
+         }
 
          @media screen and (max-width: 320px) {
             font-size: 1.4rem
@@ -44,10 +60,26 @@
 
          .logo {
             width: 20rem;
+
+            @include mq(lg, max) {
+               width: 15rem;
+            }
+
+            @include mq(xs, max) {
+               width: 10rem;
+            }
          }
 
          .old-logo {
             width: 17rem;
+
+            @include mq(lg, max) {
+               width: 12rem;
+            }
+
+            @include mq(xs, max) {
+               width: 8rem;
+            }
          }
       }
    }

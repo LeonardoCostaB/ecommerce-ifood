@@ -25,6 +25,10 @@
          @include mq(sm, max) {
             width: 12rem
          }
+
+         @include mq(xs, max) {
+            width: 10rem;
+         }
       }
 
       .slogan {

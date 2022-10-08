@@ -88,12 +88,12 @@ export function ProductApresentation({
                   <p className={style.description}>
                      { description }
 
-                     { glutem && <span className={style.glutem}>contém glutem</span>}
+                     { glutem && <span className={style.glutem}>contém glúten</span>}
                   </p>
 
                   { productAvailable && (
                      <div className={style.sku}>
-                        <strong>Tamanhos e preços disponível</strong>
+                        <strong>Tamanhos e preços disponíveis</strong>
 
                         <div className={`${style["sku-container"]} ${urlSaltPieCake && style["salt-pie-cake"]} ${urlIndividual && style.individual}`}>
                            { size.map((value, index) => {
@@ -156,7 +156,6 @@ export function ProductApresentation({
                   </button>
                </div>
             )}
-
          </div>
 
          { addCart && (

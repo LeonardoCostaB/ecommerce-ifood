@@ -13,8 +13,6 @@ import {
 
 import style from "./style.module.scss";
 
-import ifood from "../../../assets/svgs/ifood.svg";
-
 export function Minicart() {
    const [ isActiveMinicart, setIsActiveMinicart ] = useState<boolean>(false);
    const [ orderCompletionRequest, setOrderCompletionRequest ] = useState<string>();

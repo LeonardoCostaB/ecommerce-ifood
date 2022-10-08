@@ -64,13 +64,21 @@ export function Dealer() {
       { resetForm }: FormikHelpers<FormikDealerValues>
     ) => {
       try {
+         let state;
+
+         if(value.city == true) {
+            state = "Campinas"
+         } else if(value.state == true) {
+            state = "São Paulo"
+         }
+
          await createDistributor({
             variables: {
                name: value.name,
                lastName: value.lastName,
                email: value.email,
                companyName: value.companyName,
-               businessLocation: "São Paulo",
+               businessLocation: state,
                dealerHistory: value.message
             }
          })
@@ -99,7 +107,7 @@ export function Dealer() {
                <h1 className={style.title}>Área de revendedor</h1>
 
                <p className={style.description}>
-                  Caso tenha interesse em trabalhar com a revenda dos nossos produtos, conseguimos lhes ajudar com a nossa tabela de preços personalizada para lhes atender da melhor maneira possível!
+                  Caso tenha interesse em trabalhar com a revenda dos nossos produtos, entre em contato e lhe mandaremos nossa tabela de preço.
                </p>
 
                <p className={style.description}>
@@ -262,7 +270,7 @@ export function Dealer() {
                               htmlFor="message"
                               className={style.label}
                            >
-                              Conte um pouco da sua história <span>*</span>
+                              Mensagem
                            </label>
 
                            <Field
@@ -300,11 +308,15 @@ export function Dealer() {
 
          { feedbackRegister == "success" && (
             <div className={style["submit-success"]}>
-               Agradecemos seu interesse, logo mais nossa equipe entrara em contato.
+               Agradecemos seu interesse, logo mais nossa equipe entrará em contato.
             </div>
          ) || feedbackRegister == "error" && (
             <div className={style["submit-error"]}>
-               Infelizmente não conseguimos concluir o seu cadastro, tente novamente.
+               { error?.message == "Response not successful: Received status code 400" ? (
+                  <>Verificamos que esse email já existe, por favor, digite outro email.</>
+               ) : (
+                  <>Infelizmente não conseguimos concluir o seu cadastro, tente novamente.</>
+               )}
             </div>
          ) }
 
