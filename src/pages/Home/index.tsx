@@ -23,7 +23,7 @@ export function Home() {
             <section className={style["apresentation-section"]}>
                <div className={style["title-apresentation"]}>
                   <h1 className={style.title}>
-                     Sejam Bem Vindos a <strong className="dolce-cannella">Dolce Cannela</strong>
+                     Sejam Bem Vindos a <strong className="dolce-cannella">Dolce Cannella</strong>
                   </h1>
 
                   <p className={style.description}>
