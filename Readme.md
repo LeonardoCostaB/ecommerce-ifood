@@ -1,5 +1,7 @@
 # Ifood E-commerce 💪
 
+![image](https://github.com/user-attachments/assets/adcdaf8f-e4a2-449c-82bf-f7c43e4aae7a)
+
 ## 🧪 Technologies
 
 Este projeto foi desenvolvido utilizando as seguintes tecnologias:
