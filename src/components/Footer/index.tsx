@@ -12,24 +12,24 @@ export function Footer() {
             <div className={style["address-shop"]}>
                <address className={style.address}>
                   <a
-                     href="https://www.google.com/maps/place/Av.+Jaca%C3%BAna,+977+-+Vila+Aeroporto,+Campinas+-+SP,+13052-233"
+                     href=""
                      target="_blank"
                      className={style["link-address"]}
                   >
                      <MapPin size={24} />
 
-                     <span>Avenida Jacaúna 977</span>
+                     <span>Rua</span>
                   </a>
                </address>
 
                <address className={style.address}>
                   <a
-                     href="mailto:contato@dolcecannella.com.br"
+                     href="mailto:email"
                      target="_blank"
                      className={style["link-address"]}
                   >
                      <Envelope size={24} />
-                     <span>contato@dolcecannella.com.br</span>
+                     <span>email</span>
                   </a>
                </address>
             </div>

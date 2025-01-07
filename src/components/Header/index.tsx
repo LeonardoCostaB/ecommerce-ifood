@@ -104,7 +104,7 @@ export function Header() {
                                     onMouseOver={() => setIsActiveSubmenu(true)}
                                  >
                                     Menu
-   
+
                                     <span
                                        className={`${style["open-submenu"]} ${isActiveSubmenu && style["rotate-arrow"]}`}
                                        onClick={() => setIsActiveSubmenu(!isActiveSubmenu)}
@@ -128,7 +128,7 @@ export function Header() {
                                     </span>
                                  </Link>
                               ) }
-   
+
                               { isActiveSubmenu && (
                                  <div
                                     className={style["submenu"]}
@@ -162,7 +162,7 @@ export function Header() {
             </nav>
 
             <a
-               href="https://ifood.com.br/delivery/campinas-sp/casa-das-tortas---ouro-verde-vila-aeroporto/33e4d52d-bad5-4b17-aace-82b9b86f1af0"
+               href=""
                target="_blank"
                className={style["order-product"]}
             >

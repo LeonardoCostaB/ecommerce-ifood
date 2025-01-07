@@ -19,18 +19,18 @@ export function Contact() {
                   <div className={style["informations-wrapper"]}>
                      <address className={style.address}>
                         <a
-                           href="mailto:contato@dolcecannella.com.br"
+                           href="mailto:email"
                            target="_blank"
                            className={style.email}
                         >
                            <Envelope size={24} className={style["email-icon"]}/>
-                           <span>contato@dolcecannella.com.br</span>
+                           <span>email</span>
                         </a>
                      </address>
 
                      <address className={style.address}>
                         <a
-                           href="https://contate.me/dolcecannella"
+                           href="https://"
                            target="_blank"
                            className={style.whatsapp}
                         >
@@ -41,14 +41,14 @@ export function Contact() {
                      </address>
 
                      <address className={style["address-whats"]}>
-                        <a href="https://wa.me/5519996946584" target="_blank">
-                           (19) 996946584
+                        <a href="https://" target="_blank">
+                           Telefone
                         </a>
                      </address>
 
                      <address className={style.address}>
                         <MapPin size={24} />
-                        <span>Avenida Jacaúna 977</span>
+                        <span>Rua</span>
                      </address>
                   </div>
                </div>
